@@ -128,3 +128,5 @@ package-lock.json
 
 #Jet Brains
 .idea/
+
+.expo/
