@@ -10,24 +10,24 @@ import {
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 
 export default class Sidebar extends React.Component {
-  render(){
+  render() {
     return (
-    <ScrollView>
-      <ImageBackground
-        source={require("../../assets/Sidebar/back.jpg")}
-        style={styles.backgroundImage}
-      >
-        <Image
-          source={require("../../assets/Sidebar/profile.png")}
-          style={styles.profile}
-        />
-        <Text style={styles.text}>Luis Mendez</Text>
-      </ImageBackground>
-      <View style={{ flex: 1 }}>
-        <DrawerNavigatorItems{...this.props} />
-      </View>
-    </ScrollView>
-  );
+      <ScrollView>
+        <ImageBackground
+          source={require("../../assets/Sidebar/back.jpg")}
+          style={styles.backgroundImage}
+        >
+          <Image
+            source={require("../../assets/Sidebar/profile.png")}
+            style={styles.profile}
+          />
+          <Text style={styles.text}>Luis Mendez</Text>
+        </ImageBackground>
+        <View style={{ flex: 1 }}>
+          <DrawerNavigatorItems {...this.props} />
+        </View>
+      </ScrollView>
+    );
   }
 }
 

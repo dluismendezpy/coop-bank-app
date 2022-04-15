@@ -1,6 +1,10 @@
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
-import { HomeScreen, NewsScreen } from "./src/components/Navigation";
+import {
+  HomeScreen,
+  NewsScreen,
+  LoginScreen,
+} from "./src/components/Navigation";
 import Sidebar from "./src/components/Sidebar";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -23,6 +27,15 @@ const DrawerNavigator = createDrawerNavigator(
         title: "News",
         drawerIcon: ({ tintColor }) => (
           <Entypo name="news" size={16} color={tintColor} />
+        ),
+      },
+    },
+    LoginScreen: {
+      screen: LoginScreen,
+      navigationOptions: {
+        title: "Login",
+        drawerIcon: ({ tintColor }) => (
+          <Entypo name="user" size={16} color={tintColor} />
         ),
       },
     },
