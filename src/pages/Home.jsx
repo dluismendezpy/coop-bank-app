@@ -7,71 +7,57 @@ import {
   StyleSheet,
   StatusBar,
   Image,
+  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useTheme } from "react-native-paper";
-import {FontAwesome5} from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
-const SplashScreen = ({ navigation }) => {
-  const { colors } = useTheme();
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
-        onPress={() => navigation.openDrawer()}
-      >
-        <FontAwesome5 name={"bars"} size={30} color="#000000" />
-      </TouchableOpacity>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
-      <View style={styles.header}>
-        <Animatable.Image
-          animation="bounceIn"
-          duraton="1500"
-          source={require("../../assets/Home/logo.png")}
-          style={styles.logo}
-          resizeMode="stretch"
-        />
-      </View>
-      <Animatable.View
-        style={[
-          styles.footer,
-          {
-            backgroundColor: colors.background,
-          },
-        ]}
-        animation="fadeInUpBig"
-      >
-        <Text
-          style={[
-            styles.title,
-            {
-              color: colors.text,
-            },
-          ]}
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
+          onPress={() => this.props.navigation.openDrawer()}
         >
-          Stay connected with everyone!
-        </Text>
-        <Text style={styles.text}>Sign in with account</Text>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
-            <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
-              style={styles.signIn}
-            >
-              <Text style={styles.textSign}>Get Started</Text>
-              <MaterialIcons name="navigate-next" color="#fff" size={20} />
-            </LinearGradient>
-          </TouchableOpacity>
+          <FontAwesome5 name={"bars"} size={30} color="#000000" />
+        </TouchableOpacity>
+        <StatusBar backgroundColor="#009387" barStyle="light-content" />
+        <View style={styles.header}>
+          <Animatable.Image
+            animation="bounceIn"
+            duraton="1500"
+            source={require("../../assets/Home/bankOfAmerica.png")}
+            style={styles.logo}
+            resizeMode="stretch"
+          />
         </View>
-      </Animatable.View>
-    </View>
-  );
-};
-
-export default SplashScreen;
+        <Animatable.View style={styles.footer} animation="fadeInUpBig">
+          <Text style={styles.title}>Stay connected with everyone!</Text>
+          <Text style={styles.text}>Sign in with account</Text>
+          <View style={styles.button}>
+            <TouchableOpacity onPress={() => Alert.alert("Login")}>
+              <LinearGradient
+                colors={["#08d4c4", "#01ab9d"]}
+                style={styles.signIn}
+              >
+                <Text style={styles.textSign}>Get Started</Text>
+                <MaterialIcons name="navigate-next" color="#fff" size={20} />
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+        </Animatable.View>
+      </View>
+    );
+  }
+}
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.28;
@@ -112,11 +98,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   signIn: {
-    width: 150,
-    height: 40,
+    width: 360,
+    height: 50,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 50,
+    borderRadius: 10,
     flexDirection: "row",
   },
   textSign: {
