@@ -15,7 +15,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
 import { useTheme } from "react-native-paper";
-import {FontAwesome5} from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -109,11 +109,11 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-          style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
-          onPress={() => navigation.openDrawer()}
-        >
-          <FontAwesome5 name={"bars"} size={30} color="#000000" />
-        </TouchableOpacity>
+        style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
+        onPress={() => navigation.openDrawer()}
+      >
+        <FontAwesome5 name={"bars"} size={30} color="#000000" />
+      </TouchableOpacity>
       <StatusBar backgroundColor="#009387" barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome!</Text>
