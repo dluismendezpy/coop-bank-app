@@ -7,6 +7,7 @@ import {
   Platform,
   StyleSheet,
   StatusBar,
+  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
@@ -114,7 +115,7 @@ const Login = ({ navigation }) => {
       </TouchableOpacity>
       <StatusBar backgroundColor="#009387" barStyle="light-content" />
       <View style={styles.header}>
-        <Text style={styles.text_header}>Welcome!</Text>
+        <Text style={styles.text_header}>¡Inicia Sesion!</Text>
       </View>
       <Animatable.View
         animation="fadeInUpBig"
@@ -133,12 +134,12 @@ const Login = ({ navigation }) => {
             },
           ]}
         >
-          Username
+          Usuario
         </Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Your Username"
+            placeholder="Tu Usuario"
             placeholderTextColor="#666666"
             style={[
               styles.textInput,
@@ -173,12 +174,12 @@ const Login = ({ navigation }) => {
             },
           ]}
         >
-          Password
+          Contraseña
         </Text>
         <View style={styles.action}>
           <Feather name="lock" color={colors.text} size={20} />
           <TextInput
-            placeholder="Your Password"
+            placeholder="Tu Contraseña"
             placeholderTextColor="#666666"
             secureTextEntry={data.secureTextEntry ? true : false}
             style={[
@@ -201,14 +202,18 @@ const Login = ({ navigation }) => {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Password must be 8 characters long.
+              La contraseña debe tener 8 carácteres.
             </Text>
           </Animatable.View>
         )}
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Alert.alert("Centro de ayuda", "Problemas para iniciar sesion")
+          }
+        >
           <Text style={{ color: "#009387", marginTop: 15 }}>
-            Forgot password?
+            ¿Problemas para acceder?
           </Text>
         </TouchableOpacity>
         <View style={styles.button}>
@@ -230,7 +235,7 @@ const Login = ({ navigation }) => {
                   },
                 ]}
               >
-                Sign In
+                Acceder
               </Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -254,7 +259,7 @@ const Login = ({ navigation }) => {
                 },
               ]}
             >
-              Sign Up
+              Regístrate
             </Text>
           </TouchableOpacity>
         </View>
@@ -285,7 +290,9 @@ const styles = StyleSheet.create({
   text_header: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 30,
+    fontStyle: "italic",
+    textAlign: "center",
+    fontSize: 40,
   },
   text_footer: {
     color: "#05375a",
