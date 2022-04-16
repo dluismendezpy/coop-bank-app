@@ -6,15 +6,11 @@ import {
   Dimensions,
   StyleSheet,
   StatusBar,
-  Image,
-  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -25,7 +21,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
+          style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
           onPress={() => this.props.navigation.openDrawer()}
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
@@ -41,7 +37,7 @@ export default class Home extends React.Component {
           />
         </View>
         <Animatable.View style={styles.footer} animation="fadeInUpBig">
-          <Text style={styles.title}>Bienvenido!</Text>
+          <Text style={styles.title}>¡Bienvenido!</Text>
           <Text style={styles.text}>Inicia sesion en tu cuenta personal</Text>
           <View style={styles.button}>
             <TouchableOpacity
@@ -90,8 +86,9 @@ const styles = StyleSheet.create({
   title: {
     color: "#05375a",
     fontSize: 40,
-    fontWeight: "bold",
     textAlign: "center",
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
   text: {
     color: "grey",

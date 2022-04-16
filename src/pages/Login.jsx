@@ -107,7 +107,7 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
+        style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
         onPress={() => navigation.openDrawer()}
       >
         <FontAwesome5 name={"bars"} size={30} color="#000000" />
