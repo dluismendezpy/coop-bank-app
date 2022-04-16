@@ -33,7 +33,7 @@ const DrawerNavigator = createDrawerNavigator(
     LoginScreen: {
       screen: LoginScreen,
       navigationOptions: {
-        title: "Acceder",
+        title: "Login",
         drawerIcon: ({ tintColor }) => (
           <Entypo name="user" size={16} color={tintColor} />
         ),

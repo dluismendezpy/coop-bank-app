@@ -14,7 +14,7 @@ export default class Sidebar extends React.Component {
     return (
       <ScrollView>
         <ImageBackground
-          source={require("../../assets/Sidebar/back.jpg")}
+          source={require("../../assets/Sidebar/background.jpg")}
           style={styles.backgroundImage}
         >
           <Image
@@ -34,7 +34,7 @@ export default class Sidebar extends React.Component {
 const styles = StyleSheet.create({
   text: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "800",
     marginVertical: 8,
   },
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    borderWidth: 3,
+    borderWidth: 1.5,
     borderColor: "#fff",
   },
 });
