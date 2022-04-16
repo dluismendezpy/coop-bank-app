@@ -6,13 +6,10 @@ import {
   Dimensions,
   StyleSheet,
   StatusBar,
-  Image,
-  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 export default class Home extends React.Component {
@@ -24,7 +21,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={{ alignItems: "flex-start", margin: 10, marginLeft: 20 }}
+          style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
           onPress={() => this.props.navigation.openDrawer()}
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
@@ -40,16 +37,18 @@ export default class Home extends React.Component {
           />
         </View>
         <Animatable.View style={styles.footer} animation="fadeInUpBig">
-          <Text style={styles.title}>Stay connected with everyone!</Text>
-          <Text style={styles.text}>Sign in with account</Text>
+          <Text style={styles.title}>¡Bienvenido!</Text>
+          <Text style={styles.text}>Inicia sesion en tu cuenta personal</Text>
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => Alert.alert("Login")}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
               <LinearGradient
                 colors={["#08d4c4", "#01ab9d"]}
                 style={styles.signIn}
               >
-                <Text style={styles.textSign}>Get Started</Text>
-                <MaterialIcons name="navigate-next" color="#fff" size={20} />
+                <Text style={styles.textSign}>Acceso a clientes</Text>
+                {/*<MaterialIcons name="navigate-next" color="#fff" size={20} />*/}
               </LinearGradient>
             </TouchableOpacity>
           </View>
@@ -86,23 +85,26 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#05375a",
-    fontSize: 30,
+    fontSize: 40,
+    textAlign: "center",
     fontWeight: "bold",
+    fontStyle: "italic",
   },
   text: {
     color: "grey",
     marginTop: 5,
+    textAlign: "center",
   },
   button: {
     alignItems: "flex-end",
     marginTop: 30,
   },
   signIn: {
-    width: 360,
-    height: 50,
+    width: 155,
+    height: 45,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 15,
     flexDirection: "row",
   },
   textSign: {
