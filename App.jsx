@@ -15,7 +15,7 @@ const DrawerNavigator = createDrawerNavigator(
     HomeScreen: {
       screen: HomeScreen,
       navigationOptions: {
-        title: "Home",
+        title: "Inicio",
         drawerIcon: ({ tintColor }) => (
           <Feather name="home" size={16} color={tintColor} />
         ),
@@ -24,7 +24,7 @@ const DrawerNavigator = createDrawerNavigator(
     NewsScreen: {
       screen: NewsScreen,
       navigationOptions: {
-        title: "News",
+        title: "Notícias",
         drawerIcon: ({ tintColor }) => (
           <Entypo name="news" size={16} color={tintColor} />
         ),

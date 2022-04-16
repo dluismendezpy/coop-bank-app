@@ -38,7 +38,7 @@ export default class Home extends React.Component {
         </View>
         <Animatable.View style={styles.footer} animation="fadeInUpBig">
           <Text style={styles.title}>¡Bienvenido!</Text>
-          <Text style={styles.text}>Inicia sesion en tu cuenta personal</Text>
+          <Text style={styles.text}>Mantente conectado con CoopBank</Text>
           <View style={styles.button}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("Login")}
