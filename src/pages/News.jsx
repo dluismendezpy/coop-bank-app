@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { urlEndPoint } from "../constValues";
 
 const SPACING = 20;
 
@@ -22,9 +24,13 @@ export default class News extends React.Component {
     };
   }
 
+  getURL = () => {
+    return `${urlEndPoint}/noticias`;
+  };
+
   componentDidMount() {
     this.interval = setInterval(() => {
-      fetch("http://10.0.0.12:8000/news/article-list/", {
+      fetch(this.getURL(), {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -34,10 +40,11 @@ export default class News extends React.Component {
         .then((responseJson) => {
           this.setState({
             isLoading: false,
-            dataSource: responseJson,
+            dataSource: responseJson.data,
           });
-        });
-    }, 500);
+        })
+        .catch((err) => console.log(err.message));
+    }, 10000);
   }
 
   componentWillUnmount() {
@@ -48,9 +55,8 @@ export default class News extends React.Component {
     return (
       <TouchableOpacity onPress={() => Alert.alert(item.name, item.content)}>
         <View style={styles.container}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.createdAt}>{item.created_at}</Text>
-          <Text style={styles.content}>{item.content}</Text>
+          <Text style={styles.name}>{item.title}</Text>
+          <Text style={styles.createdAt}>{item.date}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -68,14 +74,13 @@ export default class News extends React.Component {
       );
     } else {
       return (
-        <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80",
-            }}
-            style={StyleSheet.absoluteFillObject}
-            blurRadius={80}
-          />
+        <View style={{ flex: 1, backgroundColor: "#21337e" }}>
+          <TouchableOpacity
+            style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
+            onPress={() => this.props.navigation.openDrawer()}
+          >
+            <FontAwesome5 name={"bars"} size={30} color="#000000" />
+          </TouchableOpacity>
           <StatusBar hidden />
           <FlatList
             data={dataSource}
