@@ -44,7 +44,7 @@ export default class News extends React.Component {
           });
         })
         .catch((err) => console.log(err.message));
-    }, 500);
+    }, 10000);
   }
 
   componentWillUnmount() {
