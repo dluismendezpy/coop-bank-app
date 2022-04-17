@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { urlEndPoint } from "../constValues";
 
 const SPACING = 20;
 
@@ -23,8 +25,7 @@ export default class News extends React.Component {
   }
 
   getURL = () => {
-    const URL = "https://coopdgii.com/coopvirtual/App/noticias";
-    return URL;
+    return `${urlEndPoint}/noticias`;
   };
 
   componentDidMount() {
@@ -73,14 +74,13 @@ export default class News extends React.Component {
       );
     } else {
       return (
-        <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80",
-            }}
-            style={StyleSheet.absoluteFillObject}
-            blurRadius={80}
-          />
+        <View style={{ flex: 1, backgroundColor: "#21337e" }}>
+          <TouchableOpacity
+            style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
+            onPress={() => this.props.navigation.openDrawer()}
+          >
+            <FontAwesome5 name={"bars"} size={30} color="#000000" />
+          </TouchableOpacity>
           <StatusBar hidden />
           <FlatList
             data={dataSource}
