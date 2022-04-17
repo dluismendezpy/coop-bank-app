@@ -22,9 +22,14 @@ export default class News extends React.Component {
     };
   }
 
+  getURL = () => {
+    const URL = "https://coopdgii.com/coopvirtual/App/noticias";
+    return URL;
+  };
+
   componentDidMount() {
     this.interval = setInterval(() => {
-      fetch("http://10.0.0.12:8000/news/article-list/", {
+      fetch(this.getURL(), {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -34,9 +39,10 @@ export default class News extends React.Component {
         .then((responseJson) => {
           this.setState({
             isLoading: false,
-            dataSource: responseJson,
+            dataSource: responseJson.data,
           });
-        });
+        })
+        .catch((err) => console.log(err.message));
     }, 500);
   }
 
@@ -48,9 +54,8 @@ export default class News extends React.Component {
     return (
       <TouchableOpacity onPress={() => Alert.alert(item.name, item.content)}>
         <View style={styles.container}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.createdAt}>{item.created_at}</Text>
-          <Text style={styles.content}>{item.content}</Text>
+          <Text style={styles.name}>{item.title}</Text>
+          <Text style={styles.createdAt}>{item.date}</Text>
         </View>
       </TouchableOpacity>
     );
