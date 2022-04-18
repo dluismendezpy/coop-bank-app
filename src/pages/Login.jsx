@@ -165,7 +165,7 @@ const Login = ({ navigation }) => {
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Username must be 4 characters long.
+              El usuario debe tener 8 caracteres.
             </Text>
           </Animatable.View>
         )}
@@ -207,7 +207,7 @@ const Login = ({ navigation }) => {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              La contraseña debe tener 8 carácteres.
+              La contraseña debe tener 8 caracteres.
             </Text>
           </Animatable.View>
         )}
