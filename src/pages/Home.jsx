@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 export default class Home extends React.Component {
@@ -21,7 +20,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
+          style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
           onPress={() => this.props.navigation.openDrawer()}
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
