@@ -11,6 +11,9 @@ import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome5 } from "@expo/vector-icons";
 
+const { height } = Dimensions.get("screen");
+const height_logo = height * 0.28;
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +23,12 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
+          style={{
+            alignItems: "flex-start",
+            marginTop: 30,
+            marginBottom: 15,
+            marginLeft: 25,
+          }}
           onPress={() => this.props.navigation.openDrawer()}
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
@@ -56,9 +64,6 @@ export default class Home extends React.Component {
     );
   }
 }
-
-const { height } = Dimensions.get("screen");
-const height_logo = height * 0.28;
 
 const styles = StyleSheet.create({
   container: {

@@ -108,7 +108,12 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
+        style={{
+          alignItems: "flex-start",
+          marginTop: 30,
+          marginBottom: 15,
+          marginLeft: 25,
+        }}
         onPress={() => navigation.openDrawer()}
       >
         <FontAwesome5 name={"bars"} size={30} color="#000000" />
@@ -160,7 +165,7 @@ const Login = ({ navigation }) => {
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Username must be 4 characters long.
+              El usuario debe tener 8 caracteres.
             </Text>
           </Animatable.View>
         )}
@@ -202,7 +207,7 @@ const Login = ({ navigation }) => {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              La contraseña debe tener 8 carácteres.
+              La contraseña debe tener 8 caracteres.
             </Text>
           </Animatable.View>
         )}

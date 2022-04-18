@@ -15,7 +15,8 @@ import { urlEndPoint } from "../constValues";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
-const maxContentLenght = 70;
+const maxContentLength = 70;
+const maxDateLength = 7;
 
 export default class News extends React.Component {
   constructor(props) {
@@ -57,28 +58,47 @@ export default class News extends React.Component {
     let { isLoading } = this.state;
     if (isLoading) {
       return (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <ActivityIndicator size="large" animated />
-        </View>
+        <>
+          <TouchableOpacity
+            style={{
+              alignItems: "flex-start",
+              marginTop: 30,
+              marginBottom: 15,
+              marginLeft: 25,
+            }}
+            onPress={() => this.props.navigation.openDrawer()}
+          >
+            <FontAwesome5 name={"bars"} size={30} color="#000000" />
+          </TouchableOpacity>
+          <View style={styles.isLoadingContainer}>
+            <ActivityIndicator size="large" color="#009387" animated />
+            <Text styles={{ fontSize: 15, fontWeight: "normal" }}>
+              Cargando...
+            </Text>
+          </View>
+        </>
       );
     } else {
       return (
         <>
           <TouchableOpacity
-            style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
+            style={{
+              alignItems: "flex-start",
+              marginTop: 30,
+              marginBottom: 15,
+              marginLeft: 25,
+            }}
             onPress={() => this.props.navigation.openDrawer()}
           >
             <FontAwesome5 name={"bars"} size={30} color="#000000" />
           </TouchableOpacity>
           <View style={{ alignItems: "center" }}>
             {this.state.dataSource.length === 0 ? (
-              <ActivityIndicator
-                style={styles.activityIndicator}
-                size="large"
-                color="black"
-              />
+              <View>
+                <Text style={styles.textError}>
+                  Error al intentar cargar las noticias.
+                </Text>
+              </View>
             ) : (
               <ScrollView showsVerticalScrollIndicator={false}>
                 {this.state.dataSource.map((news, index) =>
@@ -95,11 +115,16 @@ export default class News extends React.Component {
                         <View>
                           <Text style={styles.newsTitle}>{news.title}</Text>
                           <Text style={styles.newsContent}>
-                            {news.content.length <= maxContentLenght
-                              ? `${news.content}`
-                              : `${news.content.substring(0, maxContentLenght)}...`}
+                            {news.content.length <= maxContentLength
+                              ? `${news.content.trim()}`
+                              : `${news.content
+                                  .substring(0, maxContentLength)
+                                  .trim()}...`}
                           </Text>
-                          <Text style={styles.newsDate}>{`${news.date.substring(0, 10)}`}</Text>
+                          <Text style={styles.newsDate}>{`${news.date.substring(
+                            0,
+                            maxDateLength
+                          )}`}</Text>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -115,6 +140,11 @@ export default class News extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  isLoadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   activityIndicator: {
     height: deviceHeight,
     width: deviceWidth,
@@ -150,7 +180,16 @@ const styles = StyleSheet.create({
     width: deviceWidth - 130,
     paddingLeft: 10,
     paddingTop: 5,
+    fontStyle: "italic",
+    fontWeight: "normal",
+    fontSize: 10,
     alignItems: "flex-end",
-    textAlign: "right"
-  }
+    textAlign: "right",
+  },
+  textError: {
+    color: "#c21a1a",
+    fontWeight: "bold",
+    fontSize: 15,
+    marginTop: 50,
+  },
 });
