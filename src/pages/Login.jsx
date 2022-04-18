@@ -126,11 +126,9 @@ const Login = ({ navigation }) => {
 
   const getUser = async function (username, password) {
     if (data.username.length === 0 || data.password.length === 0) {
-      Alert.alert(
-        "Error!",
-        "Usuario o contraseña no pueden estar en blanco",
-        [{ text: "Reintentar" }]
-      );
+      Alert.alert("Error!", "Usuario o contraseña no pueden estar en blanco", [
+        { text: "Reintentar" },
+      ]);
       return;
     }
     await makeLogin(
