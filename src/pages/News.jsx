@@ -1,19 +1,21 @@
 import React from "react";
 import {
-  StatusBar,
-  FlatList,
   Image,
   ActivityIndicator,
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
-  Alert,
+  ScrollView,
+  Dimensions,
+  Linking,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { urlEndPoint } from "../constValues";
 
-const SPACING = 20;
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
+const maxContentLenght = 70;
 
 export default class News extends React.Component {
   constructor(props) {
@@ -51,19 +53,8 @@ export default class News extends React.Component {
     clearInterval(this.interval);
   }
 
-  _renderItem = ({ item, index }) => {
-    return (
-      <TouchableOpacity onPress={() => Alert.alert(item.name, item.content)}>
-        <View style={styles.container}>
-          <Text style={styles.name}>{item.title}</Text>
-          <Text style={styles.createdAt}>{item.date}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
   render() {
-    let { dataSource, isLoading } = this.state;
+    let { isLoading } = this.state;
     if (isLoading) {
       return (
         <View
@@ -74,52 +65,92 @@ export default class News extends React.Component {
       );
     } else {
       return (
-        <View style={{ flex: 1, backgroundColor: "#21337e" }}>
+        <>
           <TouchableOpacity
-            style={{ alignItems: "flex-start", marginTop: 30, marginLeft: 25 }}
+            style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
             onPress={() => this.props.navigation.openDrawer()}
           >
             <FontAwesome5 name={"bars"} size={30} color="#000000" />
           </TouchableOpacity>
-          <StatusBar hidden />
-          <FlatList
-            data={dataSource}
-            contentContainerStyle={{
-              padding: SPACING,
-              paddingTop: StatusBar.currentHeight || 42,
-            }}
-            renderItem={this._renderItem}
-          />
-        </View>
+          <View style={{ alignItems: "center" }}>
+            {this.state.dataSource.length === 0 ? (
+              <ActivityIndicator
+                style={styles.activityIndicator}
+                size="large"
+                color="black"
+              />
+            ) : (
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {this.state.dataSource.map((news, index) =>
+                  news.imagen ? (
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() => Linking.openURL(`${news.link}`)}
+                    >
+                      <View style={styles.newsContainer}>
+                        <Image
+                          source={{ uri: `${news.imagen}` }}
+                          style={styles.newsImage}
+                        />
+                        <View>
+                          <Text style={styles.newsTitle}>{news.title}</Text>
+                          <Text style={styles.newsContent}>
+                            {news.content.length <= maxContentLenght
+                              ? `${news.content}`
+                              : `${news.content.substring(0, maxContentLenght)}...`}
+                          </Text>
+                          <Text style={styles.newsDate}>{`${news.date.substring(0, 10)}`}</Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  ) : null
+                )}
+              </ScrollView>
+            )}
+          </View>
+        </>
       );
     }
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: SPACING,
-    marginBottom: SPACING,
-    backgroundColor: "rgb(215,202,202)",
-    borderRadius: 16,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 20,
+  activityIndicator: {
+    height: deviceHeight,
+    width: deviceWidth,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  name: {
-    fontSize: 22,
-    fontWeight: "700",
+  newsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderRadius: 10,
+    elevation: 4,
+    width: deviceWidth - 30,
+    marginVertical: 7,
   },
-  createdAt: {
-    fontSize: 18,
-    opacity: 0.7,
+  newsImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 10,
   },
-  content: {
-    fontSize: 14,
-    opacity: 0.8,
+  newsTitle: {
+    width: deviceWidth - 130,
+    paddingLeft: 10,
+    paddingTop: 5,
+    fontWeight: "bold",
   },
+  newsContent: {
+    width: deviceWidth - 130,
+    paddingLeft: 10,
+    paddingTop: 5,
+  },
+  newsDate: {
+    width: deviceWidth - 130,
+    paddingLeft: 10,
+    paddingTop: 5,
+    alignItems: "flex-end",
+    textAlign: "right"
+  }
 });
