@@ -60,25 +60,30 @@ export default class News extends React.Component {
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <ActivityIndicator size="large" animated />
+          <ActivityIndicator size="large" color="#009387" animated />
         </View>
       );
     } else {
       return (
         <>
           <TouchableOpacity
-            style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
+            style={{
+              alignItems: "flex-start",
+              marginTop: 30,
+              marginBottom: 15,
+              marginLeft: 25,
+            }}
             onPress={() => this.props.navigation.openDrawer()}
           >
             <FontAwesome5 name={"bars"} size={30} color="#000000" />
           </TouchableOpacity>
           <View style={{ alignItems: "center" }}>
             {this.state.dataSource.length === 0 ? (
-              <ActivityIndicator
-                style={styles.activityIndicator}
-                size="large"
-                color="black"
-              />
+              <View>
+                <Text style={styles.textError}>
+                  Error al intentar cargar las noticias.
+                </Text>
+              </View>
             ) : (
               <ScrollView showsVerticalScrollIndicator={false}>
                 {this.state.dataSource.map((news, index) =>
@@ -97,9 +102,15 @@ export default class News extends React.Component {
                           <Text style={styles.newsContent}>
                             {news.content.length <= maxContentLenght
                               ? `${news.content}`
-                              : `${news.content.substring(0, maxContentLenght)}...`}
+                              : `${news.content.substring(
+                                  0,
+                                  maxContentLenght
+                                )}...`}
                           </Text>
-                          <Text style={styles.newsDate}>{`${news.date.substring(0, 10)}`}</Text>
+                          <Text style={styles.newsDate}>{`${news.date.substring(
+                            0,
+                            10
+                          )}`}</Text>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -151,6 +162,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 5,
     alignItems: "flex-end",
-    textAlign: "right"
-  }
+    textAlign: "right",
+  },
+  textError: {
+    color: "#c21a1a",
+    fontWeight: "bold",
+    fontSize: 15,
+    marginTop: 50,
+  },
 });

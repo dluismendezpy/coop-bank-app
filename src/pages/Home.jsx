@@ -20,7 +20,12 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={{ alignItems: "flex-start", marginTop: 30, marginBottom: 15, marginLeft: 25 }}
+          style={{
+            alignItems: "flex-start",
+            marginTop: 30,
+            marginBottom: 15,
+            marginLeft: 25,
+          }}
           onPress={() => this.props.navigation.openDrawer()}
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
