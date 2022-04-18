@@ -13,14 +13,16 @@ import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-
 import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { urlEndPoint } from "../constValues";
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
     username: "",
     password: "",
+    token: "",
+    success: false,
     check_textInputChange: false,
     secureTextEntry: true,
     isValidUser: true,
@@ -30,7 +32,7 @@ const Login = ({ navigation }) => {
   const { colors } = useTheme();
 
   const textInputChange = (val) => {
-    if (val.trim().length >= 4) {
+    if (val.trim().length >= 3) {
       setData({
         ...data,
         username: val,
@@ -48,7 +50,7 @@ const Login = ({ navigation }) => {
   };
 
   const handlePasswordChange = (val) => {
-    if (val.trim().length >= 8) {
+    if (val.trim().length >= 3) {
       setData({
         ...data,
         password: val,
@@ -71,7 +73,7 @@ const Login = ({ navigation }) => {
   };
 
   const handleValidUser = (val) => {
-    if (val.trim().length >= 4) {
+    if (val.trim().length >= 3) {
       setData({
         ...data,
         isValidUser: true,
@@ -104,6 +106,36 @@ const Login = ({ navigation }) => {
   //     ]);
   //   }
   // };
+
+  async function makeLogin(url, data) {
+    return fetch(url, {
+      method: "POST",
+      body: data,
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJson) => {
+        setData({
+          success: resJson.success,
+          token: resJson.data.token,
+        });
+      });
+  }
+
+  const getUser = async function (username, password) {
+    if (data.username.length === 0 || data.password.length === 0) {
+      Alert.alert("Error!", "Usuario o contraseña no pueden estar en blanco", [
+        { text: "Reintentar" },
+      ]);
+      return;
+    }
+    await makeLogin(
+      `${urlEndPoint}/login`,
+      `usuario=${username}&clave=${password}`
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -165,7 +197,7 @@ const Login = ({ navigation }) => {
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              El usuario debe tener 8 caracteres.
+              El usuario debe tener 3 caracteres.
             </Text>
           </Animatable.View>
         )}
@@ -207,7 +239,7 @@ const Login = ({ navigation }) => {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              La contraseña debe tener 8 caracteres.
+              La contraseña debe tener 3 caracteres.
             </Text>
           </Animatable.View>
         )}
@@ -224,9 +256,7 @@ const Login = ({ navigation }) => {
         <View style={styles.button}>
           <TouchableOpacity
             style={styles.signIn}
-            // onPress={() => {
-            //   loginHandle(data.username, data.password);
-            // }}
+            onPress={() => getUser(data.username, data.password)}
           >
             <LinearGradient
               colors={["#08d4c4", "#01ab9d"]}
