@@ -1,6 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { storageTokenKey } from "../constValues";
 
 export default class Feed extends React.Component {
   constructor(props) {
@@ -23,6 +32,12 @@ export default class Feed extends React.Component {
         </TouchableOpacity>
         <View style={styles.container}>
           <Text>Feed page</Text>
+          <Button
+            title="Get Token"
+            onPress={async () =>
+              Alert.alert("Token", await AsyncStorage.getItem(storageTokenKey))
+            }
+          />
         </View>
       </>
     );

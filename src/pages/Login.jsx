@@ -15,7 +15,8 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { urlEndPoint } from "../constValues";
+import { urlEndPoint, storageTokenKey } from "../constValues";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -27,6 +28,13 @@ const Login = ({ navigation }) => {
     secureTextEntry: true,
     isValidUser: true,
     isValidPassword: true,
+  });
+
+  React.useEffect(() => {
+    const interval = setInterval(async () => {
+      await AsyncStorage.setItem(storageTokenKey, data.token);
+    }, 10);
+    return () => clearInterval(interval);
   });
 
   const { colors } = useTheme();
@@ -86,27 +94,6 @@ const Login = ({ navigation }) => {
     }
   };
 
-  // const loginHandle = (userName, password) => {
-  //   const foundUser = Users.filter((item) => {
-  //     return userName === item.username && password === item.password;
-  //   });
-  //
-  //   if (data.username.length === 0 || data.password.length === 0) {
-  //     Alert.alert(
-  //       "Wrong Input!",
-  //       "Username or password field cannot be empty.",
-  //       [{ text: "Okay" }]
-  //     );
-  //     return;
-  //   }
-  //
-  //   if (foundUser.length === 0) {
-  //     Alert.alert("Invalid User!", "Username or password is incorrect.", [
-  //       { text: "Okay" },
-  //     ]);
-  //   }
-  // };
-
   async function makeLogin(url, data) {
     return fetch(url, {
       method: "POST",
@@ -135,6 +122,7 @@ const Login = ({ navigation }) => {
       `${urlEndPoint}/login`,
       `usuario=${username}&clave=${password}`
     );
+    saveToken().then((r) => console.log(r));
   };
 
   return (
@@ -276,7 +264,9 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            // onPress={() => navigation.navigate("SignUpScreen")}
+            onPress={async () =>
+              Alert.alert("Token", await AsyncStorage.getItem(storageTokenKey))
+            }
             style={[
               styles.signIn,
               {
