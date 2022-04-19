@@ -48,7 +48,7 @@ export default class Home extends React.Component {
           <Text style={styles.text}>Mantente conectado con CoopBank</Text>
           <View style={styles.button}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Login")}
+              onPress={() => this.props.navigation.navigate("LoginScreen")}
             >
               <LinearGradient
                 colors={["#08d4c4", "#01ab9d"]}
