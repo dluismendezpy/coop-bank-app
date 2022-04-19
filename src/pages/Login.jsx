@@ -23,6 +23,7 @@ const Login = ({ navigation }) => {
     username: "",
     password: "",
     token: "",
+    mensaje: "",
     success: false,
     check_textInputChange: false,
     secureTextEntry: true,
@@ -104,10 +105,16 @@ const Login = ({ navigation }) => {
     })
       .then((res) => res.json())
       .then((resJson) => {
-        setData({
-          success: resJson.success,
-          token: resJson.data.token,
-        });
+        if (resJson.success) {
+          setData({
+            success: resJson.success,
+            token: resJson.data.token,
+          });
+        } else {
+          Alert.alert("Error!", "Usuario o contraseña incorrecto", [
+            { text: "Reintentar" },
+          ]);
+        }
       });
   }
 
@@ -122,7 +129,6 @@ const Login = ({ navigation }) => {
       `${urlEndPoint}/login`,
       `usuario=${username}&clave=${password}`
     );
-    saveToken().then((r) => console.log(r));
   };
 
   return (
