@@ -34,10 +34,12 @@ const DrawerNavigator = createDrawerNavigator(
     LoginScreen: {
       screen: LoginScreen,
       navigationOptions: {
+        drawerLabel: () => null, // Remove to show Login tab in drawer navigation sidebar
         title: "Login",
-        drawerIcon: ({ tintColor }) => (
-          <Entypo name="user" size={16} color={tintColor} />
-        ),
+        // Uncomment to show Login user in drawer navigation sidebar
+        // drawerIcon: ({ tintColor }) => (
+        //   <Entypo name="user" size={16} color={tintColor} />
+        // ),
       },
     },
     FeedScreen: {
