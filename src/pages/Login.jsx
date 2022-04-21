@@ -110,13 +110,13 @@ const Login = ({ navigation }) => {
             success: resJson.success,
             token: resJson.data.token,
           });
-          navigation.navigate("FeedScreen")
+          navigation.navigate("FeedScreen");
         } else {
           Alert.alert("Error!", "Usuario o contraseña incorrecto", [
             { text: "Reintentar" },
           ]);
         }
-      })
+      });
   }
 
   const getUser = async function (username, password) {
