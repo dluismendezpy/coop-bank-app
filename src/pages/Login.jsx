@@ -15,7 +15,12 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { urlEndPoint, storageTokenKey } from "../constValues";
+import {
+  urlEndPoint,
+  storageTokenKey,
+  firstNameUserKey,
+  lastNameUserKey,
+} from "../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../Colors";
 
@@ -23,6 +28,8 @@ const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
     username: "",
     password: "",
+    firstName: "",
+    lastName: "",
     token: "",
     mensaje: "",
     success: false,
@@ -35,6 +42,8 @@ const Login = ({ navigation }) => {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       await AsyncStorage.setItem(storageTokenKey, data.token);
+      await AsyncStorage.setItem(firstNameUserKey, data.firstName);
+      await AsyncStorage.setItem(lastNameUserKey, data.lastName);
     }, 10);
     return () => clearInterval(interval);
   });
@@ -110,6 +119,8 @@ const Login = ({ navigation }) => {
           setData({
             success: resJson.success,
             token: resJson.data.token,
+            firstName: resJson.data.nombre,
+            lastName: resJson.data.apellido,
           });
           navigation.navigate("FeedScreen");
         } else {
