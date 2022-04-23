@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import BankAccount from "../components/BankAccount";
+import { headerBackColor } from "../Colors";
 
 export default class Feed extends React.Component {
   constructor(props) {

@@ -13,7 +13,7 @@ import { Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storageTokenKey } from "./src/constValues";
 
-let isLoggedIn = false;
+let isLoggedIn = true;
 
 const getToken = () => {
   const [token, setToken] = React.useState("");
