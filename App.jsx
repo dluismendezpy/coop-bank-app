@@ -30,7 +30,6 @@ const getToken = () => {
   }
 };
 
-// 1. Test if isLoggedIn change after Login
 const DrawerNavigator = createDrawerNavigator(
   !isLoggedIn
     ? {
