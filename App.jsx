@@ -11,25 +11,8 @@ import {
 import Sidebar from "./src/components/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { storageTokenKey } from "./src/constValues";
 
 let isLoggedIn = true;
-
-const getToken = () => {
-  const [token, setToken] = React.useState("");
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      AsyncStorage.getItem(storageTokenKey).then((tok) => setToken(tok));
-    }, 20);
-    return () => clearInterval(interval);
-  });
-
-  if (token.length > 0) {
-    isLoggedIn = true;
-  }
-};
 
 const DrawerNavigator = createDrawerNavigator(
   !isLoggedIn

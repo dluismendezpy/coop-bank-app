@@ -85,7 +85,7 @@ export default class BankAccount extends React.Component {
           <Text
             style={styles.txtNameStyle}
           >{`${item.idcuenta} / ${item.tipo}`}</Text>
-          <Text style={styles.txtEmailStyle}>{item.balance_disponible}</Text>
+          <Text style={styles.txtEmailStyle}>Balance: {item.balance_disponible}</Text>
         </View>
       </View>
     );
