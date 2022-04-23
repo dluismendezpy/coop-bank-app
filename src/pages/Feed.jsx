@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Button,
-  Alert,
-} from "react-native";
+import { TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { storageTokenKey } from "../constValues";
+import BankAccount from "../components/BankAccount";
+import { headerBackColor } from "../Colors";
 
 export default class Feed extends React.Component {
   constructor(props) {
@@ -30,24 +23,8 @@ export default class Feed extends React.Component {
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
         </TouchableOpacity>
-        <View style={styles.container}>
-          <Text>Feed page</Text>
-          <Button
-            title="Get Token"
-            onPress={async () =>
-              Alert.alert("Token", await AsyncStorage.getItem(storageTokenKey))
-            }
-          />
-        </View>
+        <BankAccount />
       </>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
