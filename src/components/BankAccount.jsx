@@ -28,17 +28,17 @@ export default class BankAccount extends React.Component {
     return `${urlEndPoint}/resumen`;
   };
 
-  componentDidMount(props) {
-    AsyncStorage.getItem(storageTokenKey)
-      .then((token) => {
-        if (token) {
-          this.setState({
-            token: token,
-          });
-        }
-      })
-      .catch((err) => console.log(err.message));
+  componentDidMount() {
     this.interval = setInterval(() => {
+      AsyncStorage.getItem(storageTokenKey)
+        .then((token) => {
+          if (token) {
+            this.setState({
+              token: token,
+            });
+          }
+        })
+        .catch((err) => console.log(err.message));
       fetch(this.getURL(), {
         method: "POST",
         body: `token=${this.state.token}`,
@@ -54,6 +54,9 @@ export default class BankAccount extends React.Component {
               isLoading: false,
               dataSourceAccounts: resJson.data.cuentas,
             });
+            {
+              console.log("DATAAA: " + this.state.dataSourceAccounts);
+            }
           } else {
             Alert.alert(
               "Error!",
@@ -68,11 +71,7 @@ export default class BankAccount extends React.Component {
           }
         })
         .catch((err) => console.log(err.message));
-    }, 30000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
+    }, 20);
   }
 
   renderItem = ({ item }) => {

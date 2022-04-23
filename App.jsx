@@ -6,6 +6,7 @@ import {
   HomeScreen,
   LoginScreen,
   NewsScreen,
+  ClearScreen,
 } from "./src/components/Navigation";
 import Sidebar from "./src/components/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
@@ -109,6 +110,15 @@ const DrawerNavigator = createDrawerNavigator(
             title: "Feed",
             drawerIcon: ({ tintColor }) => (
               <Entypo name="menu" size={16} color={tintColor} />
+            ),
+          },
+        },
+        ClearScreen: {
+          screen: ClearScreen,
+          navigationOptions: {
+            title: "Logout",
+            drawerIcon: ({ tintColor }) => (
+              <Entypo name="arrow-bold-left" size={16} color={tintColor} />
             ),
           },
         },
