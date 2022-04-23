@@ -21,9 +21,9 @@ const getToken = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       AsyncStorage.getItem(storageTokenKey).then((tok) => setToken(tok));
-    }, 20)
+    }, 20);
     return () => clearInterval(interval);
-  })
+  });
 
   if (token.length > 0) {
     isLoggedIn = true;
@@ -116,7 +116,7 @@ const DrawerNavigator = createDrawerNavigator(
       },
   {
     contentComponent: (props) => <Sidebar {...props} />,
-    drawerWidth: Dimensions.get("window").width * 0.75,
+    drawerWidth: Dimensions.get("window").width * 0.7,
     hideStatusBar: true,
     contentOptions: {
       activeBackgroundColor: "rgba(121,118,212,0.2)",
