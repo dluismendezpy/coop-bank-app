@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -7,74 +7,115 @@ import {
   StyleSheet,
   ActivityIndicator,
   StatusBar,
+  Alert,
 } from "react-native";
-import axios from "axios";
 import Header from "./Header";
+import { storageTokenKey, urlEndPoint } from "../constValues";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const BankAccount = () => {
-  const [users, setUsers] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+export default class BankAccount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataSourceAccounts: [],
+      isLoading: true,
+      success: false,
+      token: "",
+    };
+  }
 
-  const getUsers = () => {
-    setIsLoading(true);
-    axios
-      .get(`https://randomuser.me/api/?page=${currentPage}&results=10`)
-      .then((res) => {
-        //setUsers(res.data.results);
-        setUsers([...users, ...res.data.results]);
-        setIsLoading(false);
-      });
+  getURL = () => {
+    return `${urlEndPoint}/resumen`;
   };
 
-  const renderItem = ({ item }) => {
+  componentDidMount(props) {
+    AsyncStorage.getItem(storageTokenKey)
+      .then((token) => {
+        if (token) {
+          this.setState({
+            token: token,
+          });
+        }
+      })
+      .catch((err) => console.log(err.message));
+    this.interval = setInterval(() => {
+      fetch(this.getURL(), {
+        method: "POST",
+        body: `token=${this.state.token}`,
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+      })
+        .then((res) => res.json())
+        .then((resJson) => {
+          if (resJson.success) {
+            this.setState({
+              success: resJson.success,
+              isLoading: false,
+              dataSourceAccounts: resJson.data.cuentas,
+            });
+          } else {
+            Alert.alert(
+              "Error!",
+              "Ha ocurrido un error. Vuelve a intentarlo.",
+              [
+                {
+                  text: "Reintentar",
+                  onPress: () => Alert.alert("Token"),
+                },
+              ]
+            );
+          }
+        })
+        .catch((err) => console.log(err.message));
+    }, 30000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  renderItem = ({ item }) => {
     return (
       <View style={styles.itemWrapperStyle}>
-        <Image
-          style={styles.itemImageStyle}
-          source={{ uri: item.picture.large }}
-        />
+        {/*<Image*/}
+        {/*  style={styles.itemImageStyle}*/}
+        {/*  source={{ uri: item.picture.large }}*/}
+        {/*/>*/}
         <View style={styles.contentWrapperStyle}>
           <Text
             style={styles.txtNameStyle}
-          >{`${item.name.title} ${item.name.first} ${item.name.last}`}</Text>
-          <Text style={styles.txtEmailStyle}>{item.email}</Text>
+          >{`${item.idcuenta} / ${item.tipo}`}</Text>
+          <Text style={styles.txtEmailStyle}>{item.balance_disponible}</Text>
         </View>
       </View>
     );
   };
 
-  const renderLoader = () => {
-    return isLoading ? (
+  renderLoader = () => {
+    return this.state.isLoading ? (
       <View style={styles.loaderStyle}>
         <ActivityIndicator size="large" color="#aaa" />
       </View>
     ) : null;
   };
 
-  const loadMoreItem = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, [currentPage]);
-
-  return (
-    <>
-      <Header />
-      <StatusBar backgroundColor="#000" />
-      <FlatList
-        data={users}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.email}
-        ListFooterComponent={renderLoader}
-        onEndReached={loadMoreItem}
-        onEndReachedThreshold={0}
-      />
-    </>
-  );
-};
+  render() {
+    return (
+      <>
+        <Header />
+        <StatusBar backgroundColor="#000" />
+        <FlatList
+          data={this.state.dataSourceAccounts}
+          renderItem={this.renderItem}
+          keyExtractor={(item) => item.idcuenta}
+          ListFooterComponent={this.renderLoader()}
+          onEndReachedThreshold={0}
+        />
+      </>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   itemWrapperStyle: {
@@ -99,9 +140,9 @@ const styles = StyleSheet.create({
     color: "#777",
   },
   loaderStyle: {
+    flex: 1,
     marginVertical: 16,
     alignItems: "center",
+    justifyContent: "center",
   },
 });
-
-export default BankAccount;
