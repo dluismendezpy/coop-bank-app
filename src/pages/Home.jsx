@@ -10,6 +10,7 @@ import {
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { backColorPrincipal } from "../Colors";
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.28;
@@ -33,7 +34,10 @@ export default class Home extends React.Component {
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
         </TouchableOpacity>
-        <StatusBar backgroundColor="#009387" barStyle="light-content" />
+        <StatusBar
+          backgroundColor={backColorPrincipal}
+          barStyle="light-content"
+        />
         <View style={styles.header}>
           <Animatable.Image
             animation="bounceIn"
@@ -68,7 +72,7 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: backColorPrincipal,
   },
   header: {
     flex: 2,

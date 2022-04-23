@@ -17,6 +17,7 @@ import { useTheme } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { urlEndPoint, storageTokenKey } from "../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { backColorPrincipal } from "../Colors";
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -145,7 +146,10 @@ const Login = ({ navigation }) => {
       >
         <FontAwesome5 name={"bars"} size={30} color="#000000" />
       </TouchableOpacity>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar
+        backgroundColor={backColorPrincipal}
+        barStyle="light-content"
+      />
       <View style={styles.header}>
         <Text style={styles.text_header}>¡Inicia Sesion!</Text>
       </View>
@@ -244,7 +248,7 @@ const Login = ({ navigation }) => {
             Alert.alert("Centro de ayuda", "Problemas para iniciar sesion")
           }
         >
-          <Text style={{ color: "#009387", marginTop: 15 }}>
+          <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
             ¿Problemas para acceder?
           </Text>
         </TouchableOpacity>
@@ -277,7 +281,7 @@ const Login = ({ navigation }) => {
             style={[
               styles.signIn,
               {
-                borderColor: "#009387",
+                borderColor: backColorPrincipal,
                 borderWidth: 1,
                 marginTop: 15,
               },
@@ -287,7 +291,7 @@ const Login = ({ navigation }) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#009387",
+                  color: backColorPrincipal,
                 },
               ]}
             >
@@ -303,7 +307,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: backColorPrincipal,
   },
   header: {
     flex: 1,
