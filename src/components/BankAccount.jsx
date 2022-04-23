@@ -11,12 +11,6 @@ import {
 import axios from "axios";
 import Header from "./Header";
 
-// class BankAccount extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-// }
-
 const BankAccount = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

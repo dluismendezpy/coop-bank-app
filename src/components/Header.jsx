@@ -13,7 +13,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Header Page</Text>
+        <Text style={{ fontSize: 30 }}>Header Page</Text>
       </View>
     );
   }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: headerBackColor,
-    height: height * 0.3,
+    height: height * 0.2,
     width: width,
   },
 });
