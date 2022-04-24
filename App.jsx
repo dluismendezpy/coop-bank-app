@@ -11,8 +11,7 @@ import {
 import Sidebar from "./src/components/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
-
-let isLoggedIn = true;
+import { isLoggedIn } from "./src/constValues";
 
 const DrawerNavigator = createDrawerNavigator(
   !isLoggedIn
@@ -49,7 +48,7 @@ const DrawerNavigator = createDrawerNavigator(
         FeedScreen: {
           screen: FeedScreen,
           navigationOptions: {
-            title: "Feed",
+            title: "Productos",
             drawerLabel: () => null,
             // drawerIcon: ({ tintColor }) => (
             //   <Entypo name="menu" size={16} color={tintColor} />
@@ -90,7 +89,7 @@ const DrawerNavigator = createDrawerNavigator(
         FeedScreen: {
           screen: FeedScreen,
           navigationOptions: {
-            title: "Feed",
+            title: "Productos",
             drawerIcon: ({ tintColor }) => (
               <Entypo name="menu" size={16} color={tintColor} />
             ),
