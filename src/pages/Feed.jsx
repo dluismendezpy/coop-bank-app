@@ -1,9 +1,10 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, ScrollView } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import BankAccount from "../components/BankAccount";
-import { headerBackColor } from "../Colors";
+import { backColorPrincipal } from "../Colors";
 import { View, StyleSheet } from "react-native";
+import Header from "../components/Header";
 
 export default class Feed extends React.Component {
   constructor(props) {
@@ -36,6 +37,6 @@ export default class Feed extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: headerBackColor,
+    backgroundColor: backColorPrincipal,
   },
 });

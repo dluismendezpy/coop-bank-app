@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Image,
-  ImageBackground,
-} from "react-native";
+import {View, ScrollView, StyleSheet, Text, Image, Dimensions} from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firstNameUserKey, lastNameUserKey } from "../constValues";
+import { backColorPrincipal } from "../Colors";
+
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -43,18 +38,15 @@ export default class Sidebar extends React.Component {
   render() {
     return (
       <ScrollView>
-        <ImageBackground
-          source={require("../../assets/Sidebar/background.jpg")}
-          style={styles.backgroundImage}
-        >
+        <View style={styles.container}>
           <Image
-            source={require("../../assets/Sidebar/profile.png")}
+            source={require("../../assets/Sidebar/defaultImageUser.jpg")}
             style={styles.profile}
           />
           <Text
             style={styles.text}
           >{`${this.state.firstName} ${this.state.lastName}`}</Text>
-        </ImageBackground>
+        </View>
         <View style={{ flex: 1 }}>
           <DrawerNavigatorItems {...this.props} />
         </View>
@@ -64,22 +56,22 @@ export default class Sidebar extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: backColorPrincipal,
+    padding: 16,
+    paddingTop: 48,
+  },
   text: {
     color: "#fff",
     fontSize: 25,
     fontWeight: "800",
     marginVertical: 8,
   },
-  backgroundImage: {
-    width: undefined,
-    padding: 16,
-    paddingTop: 48,
-  },
   profile: {
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
     borderRadius: 40,
-    borderWidth: 1.5,
+    borderWidth: .5,
     borderColor: "#fff",
   },
 });
