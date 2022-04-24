@@ -6,10 +6,11 @@ import {
   Dimensions,
   StyleSheet,
   StatusBar,
+  ImageBackground,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { backColorPrincipal } from "../Colors";
 
 const { height } = Dimensions.get("screen");
@@ -48,21 +49,28 @@ export default class Home extends React.Component {
           />
         </View>
         <Animatable.View style={styles.footer} animation="fadeInUpBig">
-          <Text style={styles.title}>¡Bienvenido!</Text>
-          <Text style={styles.text}>Mantente conectado con CoopBank</Text>
-          <View style={styles.button}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("LoginScreen")}
-            >
-              <LinearGradient
-                colors={["#08d4c4", "#01ab9d"]}
-                style={styles.signIn}
+          <ImageBackground
+            source={require("../../assets/Login/image.jpg")}
+            resizeMode="cover"
+            style={styles.imageBackground}
+            imageStyle={{ opacity: 0.1 }}
+          >
+            <Text style={styles.title}>¡Bienvenido!</Text>
+            <Text style={styles.text}>Mantente conectado con CoopBank</Text>
+            <View style={styles.button}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("LoginScreen")}
               >
-                <Text style={styles.textSign}>Acceso a clientes</Text>
-                {/*<MaterialIcons name="navigate-next" color="#fff" size={20} />*/}
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
+                <LinearGradient
+                  colors={["#08d4c4", "#01ab9d"]}
+                  style={styles.signIn}
+                >
+                  <Text style={styles.textSign}>Acceso a clientes</Text>
+                  <MaterialIcons name="navigate-next" color="#fff" size={20} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
         </Animatable.View>
       </View>
     );
@@ -97,6 +105,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontStyle: "italic",
+    zIndex: 1,
   },
   text: {
     color: "grey",
@@ -118,5 +127,11 @@ const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
   },
 });
