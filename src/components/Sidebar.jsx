@@ -1,10 +1,16 @@
 import React from "react";
-import {View, ScrollView, StyleSheet, Text, Image, Dimensions} from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  Image,
+  Dimensions,
+} from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firstNameUserKey, lastNameUserKey } from "../constValues";
 import { backColorPrincipal } from "../Colors";
-
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 40,
-    borderWidth: .5,
+    borderWidth: 0.5,
     borderColor: "#fff",
   },
 });

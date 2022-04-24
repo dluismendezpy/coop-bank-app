@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View, Alert, Button } from "react-native";
+import { View, Alert } from "react-native";
 import React from "react";
 import {
   storageTokenKey,
@@ -10,6 +10,7 @@ import {
 export default class ClearData extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { running: true };
   }
 
   logout = () => {
@@ -40,16 +41,12 @@ export default class ClearData extends React.Component {
   render() {
     return (
       <View>
-        <Button
-          title="Salir"
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          onPress={() =>
-            Alert.alert("Logout", "¿Estas seguro que quieres salir?", [
+        {this.state.running
+          ? Alert.alert("Logout", "¿Estas seguro que quieres salir?", [
               { text: "No", style: "cancel" },
               { text: "Si", onPress: () => this.logout() },
             ])
-          }
-        />
+          : console.log("Running is disabled!")}
       </View>
     );
   }
