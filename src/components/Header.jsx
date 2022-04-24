@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import { headerBackColor } from "../Colors";
+import { backColorPrincipal } from "../Colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firstNameUserKey, lastNameUserKey } from "../constValues";
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: headerBackColor,
+    backgroundColor: backColorPrincipal,
     height: height * 0.2,
     width: width,
   },

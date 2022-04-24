@@ -3,7 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  Image,
   StyleSheet,
   ActivityIndicator,
   StatusBar,
@@ -55,7 +54,7 @@ export default class BankAccount extends React.Component {
               dataSourceAccounts: resJson.data.cuentas,
             });
             {
-              console.log("DATAAA: " + this.state.dataSourceAccounts);
+              console.log("DATA: " + this.state.dataSourceAccounts);
             }
           } else {
             Alert.alert(
@@ -71,7 +70,7 @@ export default class BankAccount extends React.Component {
           }
         })
         .catch((err) => console.log(err.message));
-    }, 20);
+    }, 2000);
   }
 
   renderItem = ({ item }) => {
