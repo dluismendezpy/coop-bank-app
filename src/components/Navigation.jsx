@@ -1,11 +1,11 @@
 import React from "react";
-import Home from "../pages/Home";
-import News from "../pages/News";
+import Home from "../pages/Home/Home";
+import News from "../pages/News/News";
 import Login from "../pages/Login";
 import signup from "../pages/Signup/Signup";
 import Feed from "../pages/Feed";
 import ClearData from "../Helpers/ClearData";
-import HelpCenter from "../pages/HelpCenter";
+import HelpCenter from "../pages/HelpCenter/HelpCenter";
 import ForgotPassword from "./ForgotPassword";
 import Signup from "../pages/Signup/Signup";
 

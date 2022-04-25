@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
+import { styles } from "./styles";
+import { strings } from "./strings";
 
 export default class HelpCenter extends React.Component {
   constructor(props) {
@@ -33,17 +29,17 @@ export default class HelpCenter extends React.Component {
           <Animatable.Image
             animation="bounceIn"
             duraton="1500"
-            source={require("../../assets/principalLogo.png")}
+            source={require("../../../assets/principalLogo.png")}
             style={styles.logo}
             resizeMode="stretch"
           />
           <Text style={{ fontSize: 30, fontWeight: "bold" }}>
-            Centro de ayuda
+            {strings.helpCenter}
           </Text>
         </View>
         <View style={styles.container}>
           <View>
-            <Text style={styles.text}>Olvidé mi contraseña</Text>
+            <Text style={styles.text}>{strings.forgotPassword}</Text>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() =>
@@ -54,7 +50,7 @@ export default class HelpCenter extends React.Component {
                   colors={["#08d4c4", "#01ab9d"]}
                   style={styles.signIn}
                 >
-                  <Text style={styles.textSign}>Cambiar contraseña</Text>
+                  <Text style={styles.textSign}>{strings.changePassword}</Text>
                   <MaterialIcons name="navigate-next" color="#fff" size={20} />
                 </LinearGradient>
               </TouchableOpacity>
@@ -62,7 +58,7 @@ export default class HelpCenter extends React.Component {
           </View>
 
           <View>
-            <Text style={styles.text}>No tengo una cuenta</Text>
+            <Text style={styles.text}>{strings.doNotHavePassword}</Text>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("SignupScreen")}
@@ -71,7 +67,7 @@ export default class HelpCenter extends React.Component {
                   colors={["#08d4c4", "#01ab9d"]}
                   style={styles.signIn}
                 >
-                  <Text style={styles.textSign}>Regístrate</Text>
+                  <Text style={styles.textSign}>{strings.signUp}</Text>
                   <MaterialIcons name="navigate-next" color="#fff" size={20} />
                 </LinearGradient>
               </TouchableOpacity>
@@ -79,7 +75,7 @@ export default class HelpCenter extends React.Component {
           </View>
 
           <View>
-            <Text style={styles.text}>¿Continuas teniendo problemas?</Text>
+            <Text style={styles.text}>{strings.stillHavingProblems}</Text>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("LoginScreen")}
@@ -88,7 +84,7 @@ export default class HelpCenter extends React.Component {
                   colors={["#08d4c4", "#01ab9d"]}
                   style={styles.signIn}
                 >
-                  <Text style={styles.textSign}>Solicitar ayuda</Text>
+                  <Text style={styles.textSign}>{strings.requestHelp}</Text>
                   <MaterialIcons name="navigate-next" color="#fff" size={20} />
                 </LinearGradient>
               </TouchableOpacity>
@@ -99,40 +95,3 @@ export default class HelpCenter extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  button: {
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 30,
-  },
-  signIn: {
-    width: 200,
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 15,
-    flexDirection: "row",
-  },
-  textSign: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  header: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logo: {
-    width: 200,
-    height: 200,
-  },
-});
