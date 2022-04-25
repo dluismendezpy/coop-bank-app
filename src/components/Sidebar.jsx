@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Image,
-} from "react-native";
+import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firstNameUserKey, lastNameUserKey } from "../constValues";
@@ -42,14 +36,21 @@ export default class Sidebar extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-          <View style={this.state.firstName.length > 0 || this.state.lastName.length > 0 ? styles.container : null}>
+      <>
+        <View
+          style={
+            this.state.firstName.length > 0 || this.state.lastName.length > 0
+              ? styles.container
+              : null
+          }
+        >
           {this.state.firstName.length > 0 || this.state.lastName.length > 0 ? (
             <Image
               source={require("../../assets/Sidebar/defaultImageUser.jpg")}
               style={styles.profile}
             />
           ) : null}
+
           <Text
             style={styles.text}
           >{`${this.state.firstName} ${this.state.lastName}`}</Text>
@@ -57,7 +58,7 @@ export default class Sidebar extends React.Component {
         <View style={{ flex: 1 }}>
           <DrawerNavigatorItems {...this.props} />
         </View>
-      </ScrollView>
+      </>
     );
   }
 }
@@ -81,11 +82,10 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "#fff",
   },
-  imageBackground: {
+  image: {
     flex: 1,
     justifyContent: "center",
-    flexDirection: 'column',
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
   },
 });

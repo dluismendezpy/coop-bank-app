@@ -42,9 +42,12 @@ export default class ClearData extends React.Component {
     return (
       <View>
         {this.state.running
-          ? Alert.alert("Logout", "¿Estas seguro que quieres salir?", [
-              { text: "No", style: "cancel" },
-              { text: "Si", onPress: () => this.logout() },
+          ? Alert.alert("Cerrar sesión", "¿Estas seguro que quieres salir?", [
+              { text: "Cancelar", style: "cancel" },
+              {
+                text: "Si",
+                onPress: () => this.logout(),
+              },
             ])
           : console.log("Running is disabled!")}
       </View>
