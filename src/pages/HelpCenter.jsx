@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, Dimensions} from "react-native";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import * as Animatable from "react-native-animatable";
 
 export default class HelpCenter extends React.Component {
   constructor(props) {
@@ -22,6 +23,16 @@ export default class HelpCenter extends React.Component {
         >
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
         </TouchableOpacity>
+        <View style={styles.header}>
+          <Animatable.Image
+            animation="bounceIn"
+            duraton="1500"
+            source={require("../../assets/principalLogo.png")}
+            style={styles.logo}
+            resizeMode="stretch"
+          />
+          <Text style={{fontSize: 30, fontWeight: "bold"}}>Centro de ayuda</Text>
+        </View>
         <View style={styles.container}>
           <View>
             <Text style={styles.text}>Olvidé mi contraseña</Text>
@@ -105,5 +116,13 @@ const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
+  },
+  header: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logo: {
+    width: 200,
+    height: 200,
   },
 });
