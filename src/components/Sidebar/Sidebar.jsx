@@ -1,9 +1,9 @@
 import React from "react";
-import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { firstNameUserKey, lastNameUserKey } from "../constValues";
-import { backColorPrincipal } from "../Colors";
+import { firstNameUserKey, lastNameUserKey } from "../../constValues";
+import { styles } from "./styles";
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -46,12 +46,12 @@ export default class Sidebar extends React.Component {
         >
           {this.state.firstName.length > 0 || this.state.lastName.length > 0 ? (
             <Image
-              source={require("../../assets/Sidebar/defaultImageUser.jpg")}
+              source={require("../../../assets/Sidebar/defaultImageUser.jpg")}
               style={styles.profile}
             />
           ) : (
             <Image
-              source={require("../../assets/principalLogo.png")}
+              source={require("../../../assets/principalLogo.png")}
               style={styles.image}
             />
           )}
@@ -67,33 +67,3 @@ export default class Sidebar extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: backColorPrincipal,
-    padding: 16,
-    paddingTop: 48,
-  },
-  containerWithoutLogin: {
-    flex: .5,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  text: {
-    color: "#fff",
-    fontSize: 25,
-    fontWeight: "800",
-    marginVertical: 8,
-  },
-  profile: {
-    width: 70,
-    height: 70,
-    borderRadius: 40,
-    borderWidth: 0.5,
-    borderColor: "#fff",
-  },
-  image: {
-    width: 170,
-    height: 170,
-  },
-});

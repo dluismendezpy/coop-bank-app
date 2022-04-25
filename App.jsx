@@ -11,7 +11,7 @@ import {
   ForgotPasswordScreen,
   SignupScreen,
 } from "./src/components/Navigation";
-import Sidebar from "./src/components/Sidebar";
+import Sidebar from "./src/components/Sidebar/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
 import { isLoggedIn } from "./src/constValues";
