@@ -4,11 +4,8 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Platform,
-  StyleSheet,
   StatusBar,
   Alert,
-  Dimensions,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
@@ -21,12 +18,11 @@ import {
   storageTokenKey,
   firstNameUserKey,
   lastNameUserKey,
-} from "../constValues";
+} from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { backColorPrincipal } from "../Colors";
-
-const { height } = Dimensions.get("screen");
-const height_logo = height * 0.12;
+import { backColorPrincipal } from "../../Colors";
+import { styles } from "./styles";
+import { strings } from "./strings";
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -128,8 +124,8 @@ const Login = ({ navigation }) => {
           });
           navigation.navigate("FeedScreen");
         } else {
-          Alert.alert("Error!", "Usuario o contraseña incorrecto", [
-            { text: "Reintentar" },
+          Alert.alert(strings.error, strings.wrongUsernameOrPassword, [
+            { text: strings.tryAgain },
           ]);
         }
       });
@@ -137,8 +133,8 @@ const Login = ({ navigation }) => {
 
   const getUser = async function (username, password) {
     if (data.username.length === 0 || data.password.length === 0) {
-      Alert.alert("Error!", "Usuario o contraseña no pueden estar en blanco", [
-        { text: "Reintentar" },
+      Alert.alert(strings.error, strings.emptyUsernameOrPassword, [
+        { text: strings.tryAgain },
       ]);
       return;
     }
@@ -169,13 +165,13 @@ const Login = ({ navigation }) => {
         <Animatable.Image
           animation="bounceIn"
           duraton="1500"
-          source={require("../../assets/principalLogo.png")}
+          source={require("../../../assets/principalLogo.png")}
           style={styles.logo}
           resizeMode="stretch"
         />
       </View>
       <View style={styles.header}>
-        <Text style={styles.text_header}>¡Inicia Sesion!</Text>
+        <Text style={styles.text_header}>¡{strings.logIn}!</Text>
       </View>
       <Animatable.View
         animation="fadeInUpBig"
@@ -220,7 +216,7 @@ const Login = ({ navigation }) => {
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              El usuario debe tener 3 caracteres.
+              {strings.usernameWarningMessage}
             </Text>
           </Animatable.View>
         )}
@@ -262,7 +258,7 @@ const Login = ({ navigation }) => {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              La contraseña debe tener 3 caracteres.
+              {strings.passwordWarningMessage}
             </Text>
           </Animatable.View>
         )}
@@ -271,7 +267,7 @@ const Login = ({ navigation }) => {
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
           <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
-            ¿Problemas para acceder?
+            {strings.troubleLogIn}
           </Text>
         </TouchableOpacity>
         <View style={styles.button}>
@@ -291,7 +287,7 @@ const Login = ({ navigation }) => {
                   },
                 ]}
               >
-                Acceder
+                {strings.access}
               </Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -307,7 +303,7 @@ const Login = ({ navigation }) => {
             ]}
           >
             <View style={{ flexDirection: "row" }}>
-              <Text style={[styles.textSign]}>¿Usuario nuevo? </Text>
+              <Text style={[styles.textSign]}>{strings.newUser} </Text>
               <Text
                 style={[
                   styles.textSign,
@@ -317,7 +313,7 @@ const Login = ({ navigation }) => {
                   },
                 ]}
               >
-                Regístrate
+                {strings.signUp}
               </Text>
             </View>
           </TouchableOpacity>
@@ -326,84 +322,5 @@ const Login = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: backColorPrincipal,
-  },
-  header: {
-    flex: 1,
-    justifyContent: "flex-end",
-    paddingHorizontal: 20,
-    paddingBottom: 40,
-  },
-  footer: {
-    flex: 3,
-    backgroundColor: "#fff",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    paddingHorizontal: 20,
-    paddingVertical: 30,
-  },
-  text_header: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    textAlign: "center",
-    fontSize: 40,
-  },
-  text_footer: {
-    color: "#05375a",
-    fontSize: 18,
-  },
-  action: {
-    flexDirection: "row",
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
-    paddingBottom: 5,
-  },
-  actionError: {
-    flexDirection: "row",
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#FF0000",
-    paddingBottom: 5,
-  },
-  textInput: {
-    flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : -12,
-    paddingLeft: 10,
-    color: "#05375a",
-  },
-  errorMsg: {
-    color: "#FF0000",
-    fontSize: 14,
-  },
-  button: {
-    alignItems: "center",
-    marginTop: 50,
-  },
-  signIn: {
-    width: "100%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-  },
-  textSign: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  logo: {
-    width: height_logo,
-    height: height_logo,
-  },
-  imageContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default Login;
