@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
-import News from "../pages/News";
+import News from "../pages/News/News";
 import Login from "../pages/Login";
 import signup from "../pages/Signup/Signup";
 import Feed from "../pages/Feed";

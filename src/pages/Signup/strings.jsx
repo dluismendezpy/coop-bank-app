@@ -13,5 +13,5 @@ export const strings = {
   identificationNumber: "Cédula",
   warning: "Aviso",
   messageAfterSignup: "Pronto seras contactado por uno de nuestros asistentes.",
-  access: "Entrar"
+  access: "Entrar",
 };
