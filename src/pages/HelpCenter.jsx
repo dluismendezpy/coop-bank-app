@@ -46,7 +46,9 @@ export default class HelpCenter extends React.Component {
             <Text style={styles.text}>Olvidé mi contraseña</Text>
             <View style={styles.button}>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("LoginScreen")}
+                onPress={() =>
+                  this.props.navigation.navigate("ForgotPasswordScreen")
+                }
               >
                 <LinearGradient
                   colors={["#08d4c4", "#01ab9d"]}
