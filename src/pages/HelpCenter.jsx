@@ -65,7 +65,7 @@ export default class HelpCenter extends React.Component {
             <Text style={styles.text}>No tengo una cuenta</Text>
             <View style={styles.button}>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("LoginScreen")}
+                onPress={() => this.props.navigation.navigate("SignupScreen")}
               >
                 <LinearGradient
                   colors={["#08d4c4", "#01ab9d"]}
@@ -79,7 +79,7 @@ export default class HelpCenter extends React.Component {
           </View>
 
           <View>
-            <Text style={styles.text}>Continuas teniendo problemas</Text>
+            <Text style={styles.text}>¿Continuas teniendo problemas?</Text>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("LoginScreen")}

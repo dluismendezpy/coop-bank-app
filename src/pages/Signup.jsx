@@ -15,9 +15,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import {
-  urlEndPoint,
   storageTokenKey,
   firstNameUserKey,
   lastNameUserKey,
@@ -28,7 +27,7 @@ import { backColorPrincipal } from "../Colors";
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.12;
 
-const Login = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   const [data, setData] = React.useState({
     username: "",
     password: "",
@@ -109,42 +108,17 @@ const Login = ({ navigation }) => {
     }
   };
 
-  async function makeLogin(url, data) {
-    return fetch(url, {
-      method: "POST",
-      body: data,
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded",
-      },
-    })
-      .then((res) => res.json())
-      .then((resJson) => {
-        if (resJson.success) {
-          setData({
-            success: resJson.success,
-            token: resJson.data.token,
-            firstName: resJson.data.nombre,
-            lastName: resJson.data.apellido,
-          });
-          navigation.navigate("FeedScreen");
-        } else {
-          Alert.alert("Error!", "Usuario o contraseña incorrecto", [
-            { text: "Reintentar" },
-          ]);
-        }
-      });
-  }
-
   const getUser = async function (username, password) {
     if (data.username.length === 0 || data.password.length === 0) {
-      Alert.alert("Error!", "Usuario o contraseña no pueden estar en blanco", [
+      Alert.alert("Error!", "Cédula o contraseña no pueden estar en blanco", [
         { text: "Reintentar" },
       ]);
       return;
     }
-    await makeLogin(
-      `${urlEndPoint}/login`,
-      `usuario=${username}&clave=${password}`
+    Alert.alert(
+      "Aviso!",
+      "Pronto seras contactado por uno de nuestros asistentes.",
+      [{ text: "Entendido!", onPress: () => navigation.navigate("HomeScreen") }]
     );
   };
 
@@ -194,12 +168,12 @@ const Login = ({ navigation }) => {
             },
           ]}
         >
-          Usuario
+          Cédula
         </Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="credit-card" color={colors.text} size={20} />
           <TextInput
-            placeholder="Tu Usuario"
+            placeholder="Tu número de cédula"
             placeholderTextColor="#666666"
             style={[
               styles.textInput,
@@ -208,6 +182,7 @@ const Login = ({ navigation }) => {
               },
             ]}
             autoCapitalize="none"
+            keyboardType="numeric"
             onChangeText={(val) => textInputChange(val)}
             onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
           />
@@ -271,7 +246,7 @@ const Login = ({ navigation }) => {
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
           <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
-            ¿Problemas para acceder?
+            ¿Problemas para registrarte?
           </Text>
         </TouchableOpacity>
         <View style={styles.button}>
@@ -291,13 +266,14 @@ const Login = ({ navigation }) => {
                   },
                 ]}
               >
-                Acceder
+                Siguiente
               </Text>
+              <MaterialIcons name="navigate-next" color="#fff" size={20} />
             </LinearGradient>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate("SignupScreen")}
+            onPress={() => navigation.navigate("LoginScreen")}
             style={[
               styles.signIn,
               {
@@ -307,7 +283,7 @@ const Login = ({ navigation }) => {
             ]}
           >
             <View style={{ flexDirection: "row" }}>
-              <Text style={[styles.textSign]}>¿Usuario nuevo? </Text>
+              <Text style={[styles.textSign]}>¿Tienes una cuenta? </Text>
               <Text
                 style={[
                   styles.textSign,
@@ -317,7 +293,7 @@ const Login = ({ navigation }) => {
                   },
                 ]}
               >
-                Regístrate
+                Entrar
               </Text>
             </View>
           </TouchableOpacity>
@@ -391,6 +367,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
+    flexDirection: "row",
   },
   textSign: {
     fontSize: 18,
@@ -406,4 +383,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Signup;
