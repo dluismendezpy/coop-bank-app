@@ -20,7 +20,22 @@ import { LinearGradient } from "expo-linear-gradient";
 export default class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { email: "" };
   }
+
+  validateEmail = (text) => {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{5,8})+$/;
+    if (reg.test(text) === false) {
+      console.log("Email is Not Correct");
+      this.setState({ email: text });
+      return false;
+    }
+  };
+
+  sendMainMessage = (text) => {
+    this.setState({ email: text });
+    this.props.navigation.navigate("HomeScreen");
+  };
 
   render() {
     return (
@@ -66,7 +81,9 @@ export default class ForgotPassword extends React.Component {
                       placeholder="info@luismendezdev.com"
                       placeholderTextColor="#666666"
                       style={styles.textInput}
+                      onChangeText={(text) => this.validateEmail(text)}
                       autoCapitalize="none"
+                      value={this.state.email}
                     />
                   </View>
                 </View>
@@ -76,7 +93,14 @@ export default class ForgotPassword extends React.Component {
                     onPress={() =>
                       Alert.alert(
                         "Restablecimiento",
-                        "Correo electrónico enviado."
+                        `¿${this.state.email} es correcto?`,
+                        [
+                          { text: "Reintentar", style: "cancel" },
+                          {
+                            text: "Si, enviar",
+                            onPress: (text) => this.sendMainMessage(text),
+                          },
+                        ]
                       )
                     }
                   >
