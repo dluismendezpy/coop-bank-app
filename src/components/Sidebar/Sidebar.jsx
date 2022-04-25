@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Image,
-  Dimensions,
-} from "react-native";
+import { View, Text, Image } from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { firstNameUserKey, lastNameUserKey } from "../constValues";
-import { backColorPrincipal } from "../Colors";
+import { firstNameUserKey, lastNameUserKey } from "../../constValues";
+import { styles } from "./styles";
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -43,12 +36,26 @@ export default class Sidebar extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Image
-            source={require("../../assets/Sidebar/defaultImageUser.jpg")}
-            style={styles.profile}
-          />
+      <>
+        <View
+          style={
+            this.state.firstName.length > 0 || this.state.lastName.length > 0
+              ? styles.container
+              : styles.containerWithoutLogin
+          }
+        >
+          {this.state.firstName.length > 0 || this.state.lastName.length > 0 ? (
+            <Image
+              source={require("../../../assets/Sidebar/defaultImageUser.jpg")}
+              style={styles.profile}
+            />
+          ) : (
+            <Image
+              source={require("../../../assets/principalLogo.png")}
+              style={styles.image}
+            />
+          )}
+
           <Text
             style={styles.text}
           >{`${this.state.firstName} ${this.state.lastName}`}</Text>
@@ -56,28 +63,7 @@ export default class Sidebar extends React.Component {
         <View style={{ flex: 1 }}>
           <DrawerNavigatorItems {...this.props} />
         </View>
-      </ScrollView>
+      </>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: backColorPrincipal,
-    padding: 16,
-    paddingTop: 48,
-  },
-  text: {
-    color: "#fff",
-    fontSize: 25,
-    fontWeight: "800",
-    marginVertical: 8,
-  },
-  profile: {
-    width: 70,
-    height: 70,
-    borderRadius: 40,
-    borderWidth: 0.5,
-    borderColor: "#fff",
-  },
-});

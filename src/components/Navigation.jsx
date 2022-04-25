@@ -6,7 +6,7 @@ import signup from "../pages/Signup/Signup";
 import Feed from "../pages/Feed";
 import ClearData from "../Helpers/ClearData";
 import HelpCenter from "../pages/HelpCenter/HelpCenter";
-import ForgotPassword from "./ForgotPassword";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import Signup from "../pages/Signup/Signup";
 
 export const HomeScreen = ({ navigation }) => <Home navigation={navigation} />;
