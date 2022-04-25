@@ -268,9 +268,7 @@ const Login = ({ navigation }) => {
         )}
 
         <TouchableOpacity
-          onPress={() =>
-            Alert.alert("Centro de ayuda", "Problemas para iniciar sesion")
-          }
+          onPress={() => navigation.navigate("HelpCenterScreen")}
         >
           <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
             ¿Problemas para acceder?

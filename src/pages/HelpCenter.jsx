@@ -1,5 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class HelpCenter extends React.Component {
   constructor(props) {
@@ -8,11 +10,71 @@ export default class HelpCenter extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Olvidé mi contraseña</Text>
-        <Text style={styles.text}>No tengo una cuenta</Text>
-        <Text style={styles.text}>Continuas teniendo problemas</Text>
-      </View>
+      <>
+        <TouchableOpacity
+          style={{
+            alignItems: "flex-start",
+            marginTop: 30,
+            marginBottom: 15,
+            marginLeft: 25,
+          }}
+          onPress={() => this.props.navigation.openDrawer()}
+        >
+          <FontAwesome5 name={"bars"} size={30} color="#000000" />
+        </TouchableOpacity>
+        <View style={styles.container}>
+          <View>
+            <Text style={styles.text}>Olvidé mi contraseña</Text>
+            <View style={styles.button}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("LoginScreen")}
+              >
+                <LinearGradient
+                  colors={["#08d4c4", "#01ab9d"]}
+                  style={styles.signIn}
+                >
+                  <Text style={styles.textSign}>Cambiar contraseña</Text>
+                  <MaterialIcons name="navigate-next" color="#fff" size={20} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View>
+            <Text style={styles.text}>No tengo una cuenta</Text>
+            <View style={styles.button}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("LoginScreen")}
+              >
+                <LinearGradient
+                  colors={["#08d4c4", "#01ab9d"]}
+                  style={styles.signIn}
+                >
+                  <Text style={styles.textSign}>Regístrate</Text>
+                  <MaterialIcons name="navigate-next" color="#fff" size={20} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View>
+            <Text style={styles.text}>Continuas teniendo problemas</Text>
+            <View style={styles.button}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("LoginScreen")}
+              >
+                <LinearGradient
+                  colors={["#08d4c4", "#01ab9d"]}
+                  style={styles.signIn}
+                >
+                  <Text style={styles.textSign}>Solicitar ayuda</Text>
+                  <MaterialIcons name="navigate-next" color="#fff" size={20} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </>
     );
   }
 }
@@ -24,7 +86,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  button: {
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  signIn: {
+    width: 200,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+    flexDirection: "row",
+  },
+  textSign: {
+    color: "white",
     fontWeight: "bold",
   },
 });

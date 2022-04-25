@@ -7,6 +7,7 @@ import {
   LoginScreen,
   NewsScreen,
   ClearScreen,
+  HelpCenterScreen,
 } from "./src/components/Navigation";
 import Sidebar from "./src/components/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
@@ -49,6 +50,16 @@ const DrawerNavigator = createDrawerNavigator(
           screen: FeedScreen,
           navigationOptions: {
             title: "Productos",
+            drawerLabel: () => null,
+            // drawerIcon: ({ tintColor }) => (
+            //   <Entypo name="menu" size={16} color={tintColor} />
+            // ),
+          },
+        },
+        HelpCenterScreen: {
+          screen: HelpCenterScreen,
+          navigationOptions: {
+            title: "Help Center",
             drawerLabel: () => null,
             // drawerIcon: ({ tintColor }) => (
             //   <Entypo name="menu" size={16} color={tintColor} />
@@ -102,6 +113,16 @@ const DrawerNavigator = createDrawerNavigator(
             drawerIcon: ({ tintColor }) => (
               <Entypo name="arrow-bold-left" size={16} color={tintColor} />
             ),
+          },
+        },
+        HelpCenterScreen: {
+          screen: HelpCenterScreen,
+          navigationOptions: {
+            title: "Help Center",
+            drawerLabel: () => null,
+            // drawerIcon: ({ tintColor }) => (
+            //   <Entypo name="menu" size={16} color={tintColor} />
+            // ),
           },
         },
       },
