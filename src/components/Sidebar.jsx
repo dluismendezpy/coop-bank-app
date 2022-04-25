@@ -41,7 +41,7 @@ export default class Sidebar extends React.Component {
           style={
             this.state.firstName.length > 0 || this.state.lastName.length > 0
               ? styles.container
-              : null
+              : styles.containerWithoutLogin
           }
         >
           {this.state.firstName.length > 0 || this.state.lastName.length > 0 ? (
@@ -49,7 +49,12 @@ export default class Sidebar extends React.Component {
               source={require("../../assets/Sidebar/defaultImageUser.jpg")}
               style={styles.profile}
             />
-          ) : null}
+          ) : (
+            <Image
+              source={require("../../assets/principalLogo.png")}
+              style={styles.image}
+            />
+          )}
 
           <Text
             style={styles.text}
@@ -69,6 +74,11 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 48,
   },
+  containerWithoutLogin: {
+    flex: .5,
+    alignItems: "center",
+    justifyContent: "center"
+  },
   text: {
     color: "#fff",
     fontSize: 25,
@@ -83,9 +93,7 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
   },
   image: {
-    flex: 1,
-    justifyContent: "center",
-    width: 250,
-    height: 250,
+    width: 170,
+    height: 170,
   },
 });
