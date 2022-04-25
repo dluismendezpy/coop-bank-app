@@ -14,7 +14,7 @@ import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { backColorPrincipal } from "../Colors";
 
 const { height } = Dimensions.get("screen");
-const height_logo = height * 0.28;
+const height_logo = height * 0.4;
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
           <Animatable.Image
             animation="bounceIn"
             duraton="1500"
-            source={require("../../assets/Home/bankOfAmerica.png")}
+            source={require("../../assets/principalLogo.png")}
             style={styles.logo}
             resizeMode="stretch"
           />
@@ -56,7 +56,9 @@ export default class Home extends React.Component {
             imageStyle={{ opacity: 0.1 }}
           >
             <Text style={styles.title}>¡Bienvenido!</Text>
-            <Text style={styles.text}>Mantente conectado con CoopBank</Text>
+            <Text style={styles.text}>
+              Mantente conectado con CoopDGII Móbil
+            </Text>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("LoginScreen")}
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingVertical: 50,
+    paddingVertical: 60,
     paddingHorizontal: 30,
   },
   logo: {
