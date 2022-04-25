@@ -10,8 +10,12 @@ import {
   Dimensions,
   Alert,
   StyleSheet,
+  Platform,
 } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { backColorPrincipal } from "../Colors";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {
@@ -41,7 +45,7 @@ export default class ForgotPassword extends React.Component {
               <View style={styles.authBox}>
                 <View style={styles.logoBox}>
                   <Image
-                    source={require("../../assets/principalLogo.png")}
+                    source={require("../../assets/ForgotPassword.png")}
                     style={{ width: 100, height: 100, borderRadius: 90 }}
                   />
                 </View>
@@ -51,30 +55,44 @@ export default class ForgotPassword extends React.Component {
 
                 <View style={styles.inputBox}>
                   <Text style={styles.forgotMail}>
-                    Te enviaremos un correo electrónico. Sigue los pasos para restablecer tu contraseña
+                    Te enviaremos un correo electrónico. Sigue los pasos para
+                    restablecer tu contraseña
                   </Text>
-                  <Text style={styles.inputLabel}>Usuario</Text>
+                  <Text style={styles.inputLabel}>Correo Electrónico</Text>
 
-                  <TextInput
-                    style={styles.input}
-                    autoCapitalize="characters"
-                    keyboardType="email-address"
-                    textContentType="emailAddress"
-                    placeholder="usuario..."
-                  />
+                  <View style={styles.action}>
+                    <FontAwesome name="user-o" size={20} />
+                    <TextInput
+                      placeholder="info@luismendezdev.com"
+                      placeholderTextColor="#666666"
+                      style={styles.textInput}
+                      autoCapitalize="none"
+                    />
+                  </View>
                 </View>
 
-                <TouchableOpacity
-                  style={styles.loginButton}
-                  onPress={() =>
-                    Alert.alert(
-                      "Recuperar contraseña",
-                      "Correo de recuperación enviado."
-                    )
-                  }
-                >
-                  <Text style={styles.loginButtonText}>Enviar</Text>
-                </TouchableOpacity>
+                <View style={styles.button}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      Alert.alert(
+                        "Restablecimiento",
+                        "Correo electrónico enviado."
+                      )
+                    }
+                  >
+                    <LinearGradient
+                      colors={["#08d4c4", "#01ab9d"]}
+                      style={styles.signIn}
+                    >
+                      <Text style={styles.textSign}>Restablecer</Text>
+                      <MaterialIcons
+                        name="navigate-next"
+                        color="#fff"
+                        size={20}
+                      />
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
@@ -92,7 +110,7 @@ const styles = StyleSheet.create({
   bigCircle: {
     width: Dimensions.get("window").height * 0.7,
     height: Dimensions.get("window").height * 0.7,
-    backgroundColor: "#035afc",
+    backgroundColor: backColorPrincipal,
     borderRadius: 100,
     position: "absolute",
     right: Dimensions.get("window").width * 0.25,
@@ -101,7 +119,7 @@ const styles = StyleSheet.create({
   smallCircle: {
     width: Dimensions.get("window").height * 0.4,
     height: Dimensions.get("window").height * 0.4,
-    backgroundColor: "#035afc",
+    backgroundColor: backColorPrincipal,
     borderRadius: 100,
     position: "absolute",
     bottom: Dimensions.get("window").width * -0.2,
@@ -152,7 +170,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingHorizontal: 55,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   inputBox: {
     marginTop: 10,
@@ -176,15 +194,44 @@ const styles = StyleSheet.create({
     borderColor: "black",
   },
   loginButton: {
-    backgroundColor: "#035afc",
+    backgroundColor: backColorPrincipal,
     marginTop: 10,
     paddingVertical: 10,
-    borderRadius: 4
+    borderRadius: 4,
   },
   loginButtonText: {
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
+  action: {
+    flexDirection: "row",
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 5,
+  },
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === "ios" ? 0 : -12,
+    paddingLeft: 10,
+    color: "#05375a",
+  },
+  button: {
+    alignItems: "flex-end",
+    marginTop: 30,
+  },
+  signIn: {
+    width: 155,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+    flexDirection: "row",
+  },
+  textSign: {
+    color: "white",
+    fontWeight: "bold",
+  },
 });
