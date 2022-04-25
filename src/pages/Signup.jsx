@@ -15,9 +15,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
-import {FontAwesome5, MaterialIcons} from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import {
-  urlEndPoint,
   storageTokenKey,
   firstNameUserKey,
   lastNameUserKey,
@@ -109,42 +108,17 @@ const Signup = ({ navigation }) => {
     }
   };
 
-  async function makeLogin(url, data) {
-    return fetch(url, {
-      method: "POST",
-      body: data,
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded",
-      },
-    })
-      .then((res) => res.json())
-      .then((resJson) => {
-        if (resJson.success) {
-          setData({
-            success: resJson.success,
-            token: resJson.data.token,
-            firstName: resJson.data.nombre,
-            lastName: resJson.data.apellido,
-          });
-          navigation.navigate("FeedScreen");
-        } else {
-          Alert.alert("Error!", "Usuario o contraseña incorrecto", [
-            { text: "Reintentar" },
-          ]);
-        }
-      });
-  }
-
   const getUser = async function (username, password) {
     if (data.username.length === 0 || data.password.length === 0) {
-      Alert.alert("Error!", "Usuario o contraseña no pueden estar en blanco", [
+      Alert.alert("Error!", "Cédula o contraseña no pueden estar en blanco", [
         { text: "Reintentar" },
       ]);
       return;
     }
-    await makeLogin(
-      `${urlEndPoint}/login`,
-      `usuario=${username}&clave=${password}`
+    Alert.alert(
+      "Aviso!",
+      "Pronto seras contactado por uno de nuestros asistentes.",
+      [{ text: "Entendido!", onPress: () => navigation.navigate("HomeScreen") }]
     );
   };
 
@@ -197,7 +171,7 @@ const Signup = ({ navigation }) => {
           Cédula
         </Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="credit-card" color={colors.text} size={20} />
           <TextInput
             placeholder="Tu número de cédula"
             placeholderTextColor="#666666"
@@ -208,6 +182,7 @@ const Signup = ({ navigation }) => {
               },
             ]}
             autoCapitalize="none"
+            keyboardType="numeric"
             onChangeText={(val) => textInputChange(val)}
             onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
           />
