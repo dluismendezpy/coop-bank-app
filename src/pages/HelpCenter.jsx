@@ -1,5 +1,11 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Dimensions} from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
@@ -31,7 +37,9 @@ export default class HelpCenter extends React.Component {
             style={styles.logo}
             resizeMode="stretch"
           />
-          <Text style={{fontSize: 30, fontWeight: "bold"}}>Centro de ayuda</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+            Centro de ayuda
+          </Text>
         </View>
         <View style={styles.container}>
           <View>
