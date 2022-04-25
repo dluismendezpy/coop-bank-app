@@ -8,6 +8,7 @@ import {
   StyleSheet,
   StatusBar,
   Alert,
+  Dimensions,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
@@ -23,6 +24,9 @@ import {
 } from "../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../Colors";
+
+const { height } = Dimensions.get("screen");
+const height_logo = height * 0.12;
 
 const Login = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -161,6 +165,15 @@ const Login = ({ navigation }) => {
         backgroundColor={backColorPrincipal}
         barStyle="light-content"
       />
+      <View style={styles.imageContainer}>
+        <Animatable.Image
+          animation="bounceIn"
+          duraton="1500"
+          source={require("../../assets/principalLogo.png")}
+          style={styles.logo}
+          resizeMode="stretch"
+        />
+      </View>
       <View style={styles.header}>
         <Text style={styles.text_header}>¡Inicia Sesion!</Text>
       </View>
@@ -255,9 +268,7 @@ const Login = ({ navigation }) => {
         )}
 
         <TouchableOpacity
-          onPress={() =>
-            Alert.alert("Centro de ayuda", "Problemas para iniciar sesion")
-          }
+          onPress={() => navigation.navigate("HelpCenterScreen")}
         >
           <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
             ¿Problemas para acceder?
@@ -293,21 +304,24 @@ const Login = ({ navigation }) => {
               styles.signIn,
               {
                 borderColor: backColorPrincipal,
-                borderWidth: 1,
                 marginTop: 15,
               },
             ]}
           >
-            <Text
-              style={[
-                styles.textSign,
-                {
-                  color: backColorPrincipal,
-                },
-              ]}
-            >
-              Regístrate
-            </Text>
+            <View style={{ flexDirection: "row" }}>
+              <Text style={[styles.textSign]}>¿Usuario nuevo? </Text>
+              <Text
+                style={[
+                  styles.textSign,
+                  {
+                    color: backColorPrincipal,
+                    textDecorationLine: "underline",
+                  },
+                ]}
+              >
+                Regístrate
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
       </Animatable.View>
@@ -324,7 +338,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 40,
   },
   footer: {
     flex: 3,
@@ -383,6 +397,14 @@ const styles = StyleSheet.create({
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  logo: {
+    width: height_logo,
+    height: height_logo,
+  },
+  imageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
