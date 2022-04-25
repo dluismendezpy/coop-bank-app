@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   Image,
-  Dimensions,
 } from "react-native";
 import { DrawerNavigatorItems } from "react-navigation-drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -44,11 +43,13 @@ export default class Sidebar extends React.Component {
   render() {
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <Image
-            source={require("../../assets/Sidebar/defaultImageUser.jpg")}
-            style={styles.profile}
-          />
+          <View style={this.state.firstName.length > 0 || this.state.lastName.length > 0 ? styles.container : null}>
+          {this.state.firstName.length > 0 || this.state.lastName.length > 0 ? (
+            <Image
+              source={require("../../assets/Sidebar/defaultImageUser.jpg")}
+              style={styles.profile}
+            />
+          ) : null}
           <Text
             style={styles.text}
           >{`${this.state.firstName} ${this.state.lastName}`}</Text>
@@ -79,5 +80,12 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     borderWidth: 0.5,
     borderColor: "#fff",
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    flexDirection: 'column',
+    width: 200,
+    height: 200,
   },
 });

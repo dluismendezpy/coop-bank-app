@@ -83,10 +83,13 @@ export default class BankAccount extends React.Component {
         <View style={styles.contentWrapperStyle}>
           <Text
             style={styles.txtNameStyle}
-          >{`${item.idcuenta} / ${item.tipo}`}</Text>
-          <Text style={styles.txtEmailStyle}>
-            Balance: {item.balance_disponible}
-          </Text>
+          >{`${item.tipo} / ${item.idcuenta}`}</Text>
+          <View style={styles.containerBalance}>
+            <Text>Balance: </Text>
+            <Text style={{ textAlign: "right" }}>
+              {item.balance_disponible}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -136,13 +139,14 @@ const styles = StyleSheet.create({
   txtNameStyle: {
     fontSize: 16,
   },
-  txtEmailStyle: {
-    color: "#777",
-  },
   loaderStyle: {
     flex: 1,
     marginVertical: 16,
     alignItems: "center",
     justifyContent: "center",
+  },
+  containerBalance: {
+    flex: 1,
+    flexDirection: "row",
   },
 });
