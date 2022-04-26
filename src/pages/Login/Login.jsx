@@ -17,7 +17,8 @@ import {
   urlEndPoint,
   storageTokenKey,
   firstNameUserKey,
-  lastNameUserKey, defaultAppFont,
+  lastNameUserKey,
+  defaultAppFont,
 } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../../Colors";
@@ -266,9 +267,7 @@ const Login = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
-          <Text style={styles.accessIssueMessage}>
-            {strings.troubleLogIn}
-          </Text>
+          <Text style={styles.accessIssueMessage}>{strings.troubleLogIn}</Text>
         </TouchableOpacity>
         <View style={styles.button}>
           <TouchableOpacity

@@ -10,6 +10,7 @@ import {
   HelpCenterScreen,
   ForgotPasswordScreen,
   SignupScreen,
+  ContactScreen,
 } from "./src/components/Navigation";
 import Sidebar from "./src/components/Sidebar/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
@@ -88,6 +89,24 @@ const DrawerNavigator = createDrawerNavigator(
             // ),
           },
         },
+        ContactScreen: {
+          screen: ContactScreen,
+          navigationOptions: {
+            title: "Contacto",
+            drawerIcon: ({ tintColor }) => (
+              <Feather name="phone" size={16} color={tintColor} />
+            ),
+          },
+        },
+        ClearScreen: {
+          screen: ClearScreen,
+          navigationOptions: {
+            title: "Logout",
+            drawerIcon: ({ tintColor }) => (
+              <Entypo name="arrow-bold-left" size={16} color={tintColor} />
+            ),
+          },
+        },
       }
     : {
         HomeScreen: {
@@ -128,15 +147,6 @@ const DrawerNavigator = createDrawerNavigator(
             ),
           },
         },
-        ClearScreen: {
-          screen: ClearScreen,
-          navigationOptions: {
-            title: "Logout",
-            drawerIcon: ({ tintColor }) => (
-              <Entypo name="arrow-bold-left" size={16} color={tintColor} />
-            ),
-          },
-        },
         HelpCenterScreen: {
           screen: HelpCenterScreen,
           navigationOptions: {
@@ -165,6 +175,15 @@ const DrawerNavigator = createDrawerNavigator(
             // drawerIcon: ({ tintColor }) => (
             //   <Entypo name="menu" size={16} color={tintColor} />
             // ),
+          },
+        },
+        ContactScreen: {
+          screen: ContactScreen,
+          navigationOptions: {
+            title: "Contacto",
+            drawerIcon: ({ tintColor }) => (
+              <Feather name="phone" size={16} color={tintColor} />
+            ),
           },
         },
       },

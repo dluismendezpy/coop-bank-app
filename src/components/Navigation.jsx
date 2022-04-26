@@ -2,12 +2,12 @@ import React from "react";
 import Home from "../pages/Home/Home";
 import News from "../pages/News/News";
 import Login from "../pages/Login/Login";
-import signup from "../pages/Signup/Signup";
 import Feed from "../pages/Feed";
 import ClearData from "../Helpers/ClearData";
 import HelpCenter from "../pages/HelpCenter/HelpCenter";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import Signup from "../pages/Signup/Signup";
+import Contact from "../pages/Contact";
 
 export const HomeScreen = ({ navigation }) => <Home navigation={navigation} />;
 export const NewsScreen = ({ navigation }) => <News navigation={navigation} />;
@@ -26,4 +26,7 @@ export const ForgotPasswordScreen = ({ navigation }) => (
 );
 export const SignupScreen = ({ navigation }) => (
   <Signup navigation={navigation} />
+);
+export const ContactScreen = ({ navigation }) => (
+  <Contact navigation={navigation} />
 );
