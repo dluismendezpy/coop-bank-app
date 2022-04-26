@@ -98,15 +98,6 @@ const DrawerNavigator = createDrawerNavigator(
             ),
           },
         },
-        ClearScreen: {
-          screen: ClearScreen,
-          navigationOptions: {
-            title: "Logout",
-            drawerIcon: ({ tintColor }) => (
-              <Entypo name="arrow-bold-left" size={16} color={tintColor} />
-            ),
-          },
-        },
       }
     : {
         HomeScreen: {
@@ -183,6 +174,15 @@ const DrawerNavigator = createDrawerNavigator(
             title: "Contacto",
             drawerIcon: ({ tintColor }) => (
               <Feather name="phone" size={16} color={tintColor} />
+            ),
+          },
+        },
+        ClearScreen: {
+          screen: ClearScreen,
+          navigationOptions: {
+            title: "Logout",
+            drawerIcon: ({ tintColor }) => (
+              <Entypo name="arrow-bold-left" size={16} color={tintColor} />
             ),
           },
         },

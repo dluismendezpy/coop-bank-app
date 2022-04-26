@@ -18,7 +18,6 @@ import {
   storageTokenKey,
   firstNameUserKey,
   lastNameUserKey,
-  defaultAppFont,
 } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../../Colors";
