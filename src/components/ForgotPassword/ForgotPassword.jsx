@@ -58,7 +58,7 @@ export default class ForgotPassword extends React.Component {
               <View style={styles.authBox}>
                 <View style={styles.logoBox}>
                   <Image
-                    source={require("../../../assets/principalLogo.png")}
+                    source={require("../../../assets/logo.png")}
                     style={styles.image}
                   />
                 </View>
