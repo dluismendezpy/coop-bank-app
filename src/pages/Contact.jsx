@@ -160,6 +160,11 @@ export default function Contact() {
         renderItem={({ item }) => {
           return (
             <View style={{ width, alignItems: "center", padding: 20 }}>
+              <StatusBar
+                barStyle="dark-content"
+                hidden={false}
+                translucent={true}
+              />
               <View
                 style={{
                   flex: 0.7,
