@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, ScrollView } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import BankAccount from "../components/BankAccount";
+import BankAccount from "../components/BankAccount/BankAccount";
 import { backColorPrincipal } from "../Colors";
 import { View, StyleSheet } from "react-native";
 import Header from "../components/Header";
