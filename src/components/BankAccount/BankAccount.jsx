@@ -10,7 +10,8 @@ import {
 import Header from "../Header";
 import { storageTokenKey, urlEndPoint } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {styles} from "./styles";
+import { styles } from "./styles";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default class BankAccount extends React.Component {
   constructor(props) {
@@ -75,20 +76,19 @@ export default class BankAccount extends React.Component {
 
   renderItem = ({ item }) => {
     return (
-      <View style={styles.itemWrapperStyle}>
-        {/*<Image*/}
-        {/*  style={styles.itemImageStyle}*/}
-        {/*  source={{ uri: item.picture.large }}*/}
-        {/*/>*/}
+      <View style={styles.container}>
         <View style={styles.contentWrapperStyle}>
           <Text
-            style={styles.txtNameStyle}
+            style={styles.accountTypeText}
           >{`${item.tipo} / ${item.idcuenta}`}</Text>
           <View style={styles.containerBalance}>
-            <Text>Balance: </Text>
-            <Text style={{ textAlign: "right" }}>
+            <Text style={styles.balanceTextStyle}>Balance: </Text>
+            <Text
+              style={[styles.balanceTextStyle, { flex: 1, textAlign: "right" }]}
+            >
               {item.balance_disponible}
             </Text>
+            <MaterialIcons name="navigate-next" color="#53115B" size={30} />
           </View>
         </View>
       </View>

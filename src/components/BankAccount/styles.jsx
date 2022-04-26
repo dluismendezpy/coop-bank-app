@@ -1,23 +1,20 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
+import { defaultAppFont } from "../../constValues";
 
 export const styles = StyleSheet.create({
-  itemWrapperStyle: {
-    flexDirection: "row",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderColor: "#ddd",
-  },
-  itemImageStyle: {
-    width: 50,
-    height: 50,
-    marginRight: 16,
+  container: {
+    margin: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    borderWidth: 1,
+    borderColor: "#53115B",
   },
   contentWrapperStyle: {
     justifyContent: "space-around",
   },
-  txtNameStyle: {
-    fontSize: 16,
+  accountTypeText: {
+    fontSize: 14,
+    fontFamily: defaultAppFont,
   },
   loaderStyle: {
     flex: 1,
@@ -26,7 +23,11 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   containerBalance: {
-    flex: 1,
     flexDirection: "row",
+  },
+  balanceTextStyle: {
+    fontFamily: defaultAppFont,
+    fontSize: 14,
+    marginTop: 5,
   },
 });
