@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { backColorPrincipal } from "../../Colors";
+import {defaultAppFont} from "../../constValues";
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.4;
@@ -33,11 +34,13 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontStyle: "italic",
     zIndex: 1,
+    fontFamily: defaultAppFont
   },
   text: {
     color: "grey",
     marginTop: 5,
     textAlign: "center",
+    fontFamily: defaultAppFont
   },
   button: {
     alignItems: "flex-end",
@@ -54,6 +57,7 @@ export const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
+    fontFamily: defaultAppFont
   },
   imageBackground: {
     flex: 1,
