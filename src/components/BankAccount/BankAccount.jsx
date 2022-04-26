@@ -3,14 +3,14 @@ import {
   View,
   Text,
   FlatList,
-  StyleSheet,
   ActivityIndicator,
   StatusBar,
   Alert,
 } from "react-native";
-import Header from "./Header";
-import { storageTokenKey, urlEndPoint } from "../constValues";
+import Header from "../Header";
+import { storageTokenKey, urlEndPoint } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {styles} from "./styles";
 
 export default class BankAccount extends React.Component {
   constructor(props) {
@@ -119,34 +119,3 @@ export default class BankAccount extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  itemWrapperStyle: {
-    flexDirection: "row",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderColor: "#ddd",
-  },
-  itemImageStyle: {
-    width: 50,
-    height: 50,
-    marginRight: 16,
-  },
-  contentWrapperStyle: {
-    justifyContent: "space-around",
-  },
-  txtNameStyle: {
-    fontSize: 16,
-  },
-  loaderStyle: {
-    flex: 1,
-    marginVertical: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  containerBalance: {
-    flex: 1,
-    flexDirection: "row",
-  },
-});
