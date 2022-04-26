@@ -7,7 +7,10 @@ import {
   View,
 } from "react-native";
 import MapView, { Callout, Circle, Marker } from "react-native-maps";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { defaultAppFont } from "../../constValues";
+import { LinearGradient } from "expo-linear-gradient";
+import { strings } from "../Home/strings";
 
 const lat = 18.474509509541246;
 const log = -69.902739253968;
@@ -25,7 +28,7 @@ export default function Map({ navigation }) {
   });
 
   return (
-    <View>
+    <>
       <TouchableOpacity
         style={{
           alignItems: "flex-start",
@@ -37,7 +40,8 @@ export default function Map({ navigation }) {
       >
         <FontAwesome5 name={"bars"} size={30} color="#000000" />
       </TouchableOpacity>
-      <View style={{ flex: 1 }}>
+
+      <View style={styles.mapContainer}>
         <MapView
           style={styles.map}
           initialRegion={{
@@ -75,19 +79,91 @@ export default function Map({ navigation }) {
           <Circle center={pin} radius={1000} />
         </MapView>
       </View>
-    </View>
+
+      <View style={styles.textContainer}>
+        <View>
+          <Text style={styles.textTitle}>Whatsapp</Text>
+          <View style={{ flexDirection: "row" }}>
+            <MaterialIcons
+              style={{ marginTop: 5, marginLeft: 10 }}
+              name="phone"
+              color="#000000"
+              size={20}
+            />
+            <Text style={styles.textInfo}>(849) 451-0798</Text>
+          </View>
+        </View>
+        <View>
+          <Text style={styles.textTitle}>Oficina</Text>
+          <View style={{ flexDirection: "row" }}>
+            <MaterialIcons
+              style={{ marginTop: 5, marginLeft: 10 }}
+              name="phone"
+              color="#000000"
+              size={20}
+            />
+            <Text style={styles.textInfo}>(809) 287-2700</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.button}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("LoginScreen")}
+        >
+          <LinearGradient colors={["#08d4c4", "#01ab9d"]} style={styles.signIn}>
+            <Text style={styles.textSign}>Vorver a inicio</Text>
+            <MaterialIcons name="navigate-next" color="#fff" size={20} />
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mapContainer: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
   map: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height / 1.6,
+  },
+  textContainer: {
+    flex: 0.5,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  textTitle: {
+    fontFamily: defaultAppFont,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    fontSize: 18,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  textInfo: {
+    fontFamily: defaultAppFont,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
+  },
+  button: {
+    alignItems: "flex-end",
+    marginBottom: 20,
+    marginRight: 20,
+  },
+  signIn: {
+    width: 155,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+    flexDirection: "row",
+  },
+  textSign: {
+    color: "white",
+    fontWeight: "bold",
+    fontFamily: defaultAppFont,
   },
 });
