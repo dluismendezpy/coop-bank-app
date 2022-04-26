@@ -2,7 +2,7 @@ import { Dimensions, Platform, StyleSheet } from "react-native";
 import { backColorPrincipal } from "../../Colors";
 
 const { height } = Dimensions.get("screen");
-const height_logo = height * 0.12;
+const height_logo = height * 0.16;
 
 export const styles = StyleSheet.create({
   container: {

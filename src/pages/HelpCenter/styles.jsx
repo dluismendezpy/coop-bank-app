@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import {defaultAppFont} from "../../constValues";
+import { defaultAppFont } from "../../constValues";
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,12 +11,12 @@ export const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     fontFamily: defaultAppFont,
-    marginTop: 10
+    marginTop: 10,
   },
   text: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   button: {
     alignItems: "center",
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   header: {
     justifyContent: "center",

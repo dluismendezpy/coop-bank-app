@@ -17,7 +17,7 @@ import {
   urlEndPoint,
   storageTokenKey,
   firstNameUserKey,
-  lastNameUserKey, defaultAppFont,
+  lastNameUserKey,
 } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../../Colors";
@@ -165,7 +165,7 @@ const Login = ({ navigation }) => {
         <Animatable.Image
           animation="bounceIn"
           duraton="1500"
-          source={require("../../../assets/principalLogo.png")}
+          source={require("../../../assets/logo.png")}
           style={styles.logo}
           resizeMode="stretch"
         />
@@ -266,9 +266,7 @@ const Login = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
-          <Text style={styles.accessIssueMessage}>
-            {strings.troubleLogIn}
-          </Text>
+          <Text style={styles.accessIssueMessage}>{strings.troubleLogIn}</Text>
         </TouchableOpacity>
         <View style={styles.button}>
           <TouchableOpacity

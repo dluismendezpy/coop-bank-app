@@ -51,7 +51,7 @@ export default class Sidebar extends React.Component {
             />
           ) : (
             <Image
-              source={require("../../../assets/principalLogo.png")}
+              source={require("../../../assets/logo.png")}
               style={styles.image}
             />
           )}

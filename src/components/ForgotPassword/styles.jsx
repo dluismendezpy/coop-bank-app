@@ -1,6 +1,6 @@
 import { Dimensions, Platform, StyleSheet } from "react-native";
 import { backColorPrincipal } from "../../Colors";
-import {defaultAppFont} from "../../constValues";
+import { defaultAppFont } from "../../constValues";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    borderRadius: 90
+    borderRadius: 90,
   },
   centeredView: {
     width: "100%",
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 55,
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   inputBox: {
     marginTop: 10,
@@ -88,13 +88,13 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   inputLabel: {
     fontSize: 18,
     marginBottom: 6,
     paddingTop: 20,
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   input: {
     width: "100%",
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
   action: {
     flexDirection: "row",
@@ -145,6 +145,6 @@ export const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
-    fontFamily: defaultAppFont
+    fontFamily: defaultAppFont,
   },
 });

@@ -11,5 +11,5 @@ export const strings = {
   newUser: "¿Usuario nuevo?",
   signUp: "Regístrate",
   user: "Usuario",
-  password: "Contraseña"
+  password: "Contraseña",
 };

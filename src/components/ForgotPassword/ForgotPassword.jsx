@@ -13,7 +13,7 @@ import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
-import {strings} from "./strings";
+import { strings } from "./strings";
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {
@@ -58,7 +58,7 @@ export default class ForgotPassword extends React.Component {
               <View style={styles.authBox}>
                 <View style={styles.logoBox}>
                   <Image
-                    source={require("../../../assets/principalLogo.png")}
+                    source={require("../../../assets/logo.png")}
                     style={styles.image}
                   />
                 </View>
@@ -67,9 +67,7 @@ export default class ForgotPassword extends React.Component {
                 </Text>
 
                 <View style={styles.inputBox}>
-                  <Text style={styles.forgotMail}>
-                    {strings.bodyMessage}
-                  </Text>
+                  <Text style={styles.forgotMail}>{strings.bodyMessage}</Text>
                   <Text style={styles.inputLabel}>{strings.email}</Text>
 
                   <View style={styles.action}>
@@ -105,7 +103,9 @@ export default class ForgotPassword extends React.Component {
                       colors={["#08d4c4", "#01ab9d"]}
                       style={styles.signIn}
                     >
-                      <Text style={styles.textSign}>{strings.restorePassword}</Text>
+                      <Text style={styles.textSign}>
+                        {strings.restorePassword}
+                      </Text>
                       <MaterialIcons
                         name="navigate-next"
                         color="#fff"
