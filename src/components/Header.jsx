@@ -2,7 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { backColorPrincipal } from "../Colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { firstNameUserKey, lastNameUserKey } from "../constValues";
+import {
+  defaultAppFont,
+  firstNameUserKey,
+  lastNameUserKey,
+} from "../constValues";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("screen").height;
@@ -39,9 +43,9 @@ export default class Header extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text
-          style={{ fontSize: 30 }}
-        >{`${this.state.firstName} ${this.state.lastName}`}</Text>
+        <Text style={styles.textName}>
+          Hola, {`${this.state.firstName} ${this.state.lastName}`}!
+        </Text>
       </View>
     );
   }
@@ -52,7 +56,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: backColorPrincipal,
-    height: height * 0.2,
+    height: height * 0.19,
     width: width,
+  },
+  textName: {
+    fontSize: 20,
+    fontFamily: defaultAppFont,
+    fontStyle: "normal",
   },
 });

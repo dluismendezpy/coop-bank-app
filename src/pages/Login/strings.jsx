@@ -10,4 +10,6 @@ export const strings = {
   access: "Acceder",
   newUser: "¿Usuario nuevo?",
   signUp: "Regístrate",
+  user: "Usuario",
+  password: "Contraseña"
 };

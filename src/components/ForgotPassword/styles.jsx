@@ -1,5 +1,9 @@
 import { Dimensions, Platform, StyleSheet } from "react-native";
 import { backColorPrincipal } from "../../Colors";
+import {defaultAppFont} from "../../constValues";
+
+const height = Dimensions.get("window").height;
+const width = Dimensions.get("window").width;
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,22 +11,27 @@ export const styles = StyleSheet.create({
     position: "relative",
   },
   bigCircle: {
-    width: Dimensions.get("window").height * 0.7,
-    height: Dimensions.get("window").height * 0.7,
+    width: height * 0.7,
+    height: height * 0.7,
     backgroundColor: backColorPrincipal,
     borderRadius: 100,
     position: "absolute",
-    right: Dimensions.get("window").width * 0.25,
+    right: width * 0.25,
     top: -50,
   },
   smallCircle: {
-    width: Dimensions.get("window").height * 0.4,
-    height: Dimensions.get("window").height * 0.4,
+    width: height * 0.4,
+    height: height * 0.4,
     backgroundColor: backColorPrincipal,
     borderRadius: 100,
     position: "absolute",
-    bottom: Dimensions.get("window").width * -0.2,
-    right: Dimensions.get("window").width * -0.3,
+    bottom: width * -0.2,
+    right: width * -0.3,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 90
   },
   centeredView: {
     width: "100%",
@@ -70,6 +79,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 55,
     alignItems: "center",
     justifyContent: "center",
+    fontFamily: defaultAppFont
   },
   inputBox: {
     marginTop: 10,
@@ -78,11 +88,13 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     alignItems: "center",
     justifyContent: "center",
+    fontFamily: defaultAppFont
   },
   inputLabel: {
     fontSize: 18,
     marginBottom: 6,
     paddingTop: 20,
+    fontFamily: defaultAppFont
   },
   input: {
     width: "100%",
@@ -103,6 +115,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
+    fontFamily: defaultAppFont
   },
   action: {
     flexDirection: "row",
@@ -122,7 +135,7 @@ export const styles = StyleSheet.create({
     marginTop: 30,
   },
   signIn: {
-    width: 155,
+    width: 185,
     height: 45,
     justifyContent: "center",
     alignItems: "center",
@@ -132,5 +145,6 @@ export const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
+    fontFamily: defaultAppFont
   },
 });

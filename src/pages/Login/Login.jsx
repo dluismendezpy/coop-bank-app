@@ -17,7 +17,7 @@ import {
   urlEndPoint,
   storageTokenKey,
   firstNameUserKey,
-  lastNameUserKey,
+  lastNameUserKey, defaultAppFont,
 } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { backColorPrincipal } from "../../Colors";
@@ -190,7 +190,7 @@ const Login = ({ navigation }) => {
             },
           ]}
         >
-          Usuario
+          {strings.user}
         </Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
@@ -230,7 +230,7 @@ const Login = ({ navigation }) => {
             },
           ]}
         >
-          Contraseña
+          {strings.password}
         </Text>
         <View style={styles.action}>
           <Feather name="lock" color={colors.text} size={20} />
@@ -266,7 +266,7 @@ const Login = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
-          <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
+          <Text style={styles.accessIssueMessage}>
             {strings.troubleLogIn}
           </Text>
         </TouchableOpacity>

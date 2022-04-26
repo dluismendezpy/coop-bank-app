@@ -1,23 +1,15 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  StatusBar,
-  Alert,
-} from "react-native";
+import { View, Text, FlatList, StatusBar, Alert } from "react-native";
 import { storageTokenKey, urlEndPoint } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export default class BankAccount extends React.Component {
+export default class BankLoans extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dataSourceAccounts: [],
-      isLoading: true,
       success: false,
       token: "",
     };
@@ -50,8 +42,7 @@ export default class BankAccount extends React.Component {
           if (resJson.success) {
             this.setState({
               success: resJson.success,
-              isLoading: false,
-              dataSourceAccounts: resJson.data.cuentas,
+              dataSourceAccounts: resJson.data.prestamos,
             });
             {
               console.log("DATA: " + this.state.dataSourceAccounts);
@@ -79,27 +70,19 @@ export default class BankAccount extends React.Component {
         <View style={styles.contentWrapperStyle}>
           <Text
             style={styles.accountTypeText}
-          >{`${item.tipo} / ${item.idcuenta}`}</Text>
+          >{`PRESTAMO / ${item.idprestamo}`}</Text>
           <View style={styles.containerBalance}>
             <Text style={styles.balanceTextStyle}>Balance: </Text>
             <Text
               style={[styles.balanceTextStyle, { flex: 1, textAlign: "right" }]}
             >
-              $DOP {item.balance_disponible}
+              $DOP {item.balance_prestamo}
             </Text>
             <MaterialIcons name="navigate-next" color="#53115B" size={30} />
           </View>
         </View>
       </View>
     );
-  };
-
-  renderLoader = () => {
-    return this.state.isLoading ? (
-      <View style={styles.loaderStyle}>
-        <ActivityIndicator size="large" color="#aaa" />
-      </View>
-    ) : null;
   };
 
   render() {
@@ -110,7 +93,6 @@ export default class BankAccount extends React.Component {
           data={this.state.dataSourceAccounts}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.idcuenta}
-          ListFooterComponent={this.renderLoader()}
           onEndReachedThreshold={0}
         />
       </>

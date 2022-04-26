@@ -33,7 +33,7 @@ export default class HelpCenter extends React.Component {
             style={styles.logo}
             resizeMode="stretch"
           />
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+          <Text style={ styles.helpCenterText }>
             {strings.helpCenter}
           </Text>
         </View>

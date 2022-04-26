@@ -13,6 +13,7 @@ import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
+import {strings} from "./strings";
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {
@@ -57,20 +58,19 @@ export default class ForgotPassword extends React.Component {
               <View style={styles.authBox}>
                 <View style={styles.logoBox}>
                   <Image
-                    source={require("../../../assets/ForgotPassword.png")}
-                    style={{ width: 100, height: 100, borderRadius: 90 }}
+                    source={require("../../../assets/principalLogo.png")}
+                    style={styles.image}
                   />
                 </View>
                 <Text style={styles.troubleLoginTitle}>
-                  ¿Olvidaste tu contraseña?
+                  {strings.forgotPassword}
                 </Text>
 
                 <View style={styles.inputBox}>
                   <Text style={styles.forgotMail}>
-                    Te enviaremos un correo electrónico. Sigue los pasos para
-                    restablecer tu contraseña
+                    {strings.bodyMessage}
                   </Text>
-                  <Text style={styles.inputLabel}>Correo Electrónico</Text>
+                  <Text style={styles.inputLabel}>{strings.email}</Text>
 
                   <View style={styles.action}>
                     <FontAwesome name="user-o" size={20} />
@@ -89,12 +89,12 @@ export default class ForgotPassword extends React.Component {
                   <TouchableOpacity
                     onPress={() =>
                       Alert.alert(
-                        "Restablecimiento",
-                        `¿${this.state.email} es correcto?`,
+                        strings.restorePassword,
+                        `¿${this.state.email} ${strings.isCorrect}`,
                         [
-                          { text: "Reintentar", style: "cancel" },
+                          { text: strings.tryAgain, style: "cancel" },
                           {
-                            text: "Si, enviar",
+                            text: strings.yesSend,
                             onPress: (text) => this.sendMainMessage(text),
                           },
                         ]
@@ -105,7 +105,7 @@ export default class ForgotPassword extends React.Component {
                       colors={["#08d4c4", "#01ab9d"]}
                       style={styles.signIn}
                     >
-                      <Text style={styles.textSign}>Restablecer</Text>
+                      <Text style={styles.textSign}>{strings.restorePassword}</Text>
                       <MaterialIcons
                         name="navigate-next"
                         color="#fff"
