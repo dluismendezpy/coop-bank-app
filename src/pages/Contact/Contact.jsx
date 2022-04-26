@@ -10,12 +10,22 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { defaultAppFont } from "../constValues";
+import { defaultAppFont } from "../../constValues";
 import { MaterialIcons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
 
 const bgs = ["#645C75", "#8AA769", "#E4D366", "#B98EFF"];
 const DATA = [
+  {
+    key: "3571573",
+    title: "CoopDGII",
+    rol: "Oficial de Servicio",
+    phone: "809-287-2875",
+    email: "info@luismendezdev.com",
+    description:
+      "Nuestra área de servicio siempre innovando para mantener informado a todos socios.",
+    image: "https://coopdgii.com/wp-content/uploads/2019/10/Logo-Coop2-01.png",
+  },
   {
     key: "3571572",
     title: "Valentina García",
@@ -137,7 +147,7 @@ const Square = ({ scrollX }) => {
   );
 };
 
-export default function Contact() {
+export default function Contact({ navigation }) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
   return (
@@ -195,15 +205,17 @@ export default function Contact() {
                   </Text>
                   <TouchableOpacity
                     onPress={() =>
-                      Alert.alert(
-                        "Contacto",
-                        `¿Quieres contactar a ${item.title} al numero ${item.phone}?`,
-                        [
-                          { text: "Cancelar", style: "cancel" },
-                          { text: "Llamar" },
-                          { text: "Copiar Email" },
-                        ]
-                      )
+                      item.title === "CoopDGII"
+                        ? navigation.navigate("MapScreen")
+                        : Alert.alert(
+                            "Contacto",
+                            `¿Quieres contactar a ${item.title} al numero ${item.phone}?`,
+                            [
+                              { text: "Cancelar", style: "cancel" },
+                              { text: "Llamar" },
+                              { text: "Copiar Email" },
+                            ]
+                          )
                     }
                   >
                     <MaterialIcons

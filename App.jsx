@@ -11,6 +11,7 @@ import {
   ForgotPasswordScreen,
   SignupScreen,
   ContactScreen,
+  MapScreen,
 } from "./src/components/Navigation";
 import Sidebar from "./src/components/Sidebar/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
@@ -83,6 +84,16 @@ const DrawerNavigator = createDrawerNavigator(
           screen: SignupScreen,
           navigationOptions: {
             title: "Register",
+            drawerLabel: () => null,
+            // drawerIcon: ({ tintColor }) => (
+            //   <Entypo name="menu" size={16} color={tintColor} />
+            // ),
+          },
+        },
+        MapScreen: {
+          screen: MapScreen,
+          navigationOptions: {
+            title: "Map",
             drawerLabel: () => null,
             // drawerIcon: ({ tintColor }) => (
             //   <Entypo name="menu" size={16} color={tintColor} />
@@ -162,6 +173,16 @@ const DrawerNavigator = createDrawerNavigator(
           screen: SignupScreen,
           navigationOptions: {
             title: "Register",
+            drawerLabel: () => null,
+            // drawerIcon: ({ tintColor }) => (
+            //   <Entypo name="menu" size={16} color={tintColor} />
+            // ),
+          },
+        },
+        MapScreen: {
+          screen: MapScreen,
+          navigationOptions: {
+            title: "Map",
             drawerLabel: () => null,
             // drawerIcon: ({ tintColor }) => (
             //   <Entypo name="menu" size={16} color={tintColor} />
