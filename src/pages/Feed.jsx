@@ -5,7 +5,7 @@ import BankAccount from "../components/BankAccount/BankAccount";
 import { backColorPrincipal } from "../Colors";
 import { View, StyleSheet } from "react-native";
 import BankLoans from "../components/BankLoans/BankLoans";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 export default class Feed extends React.Component {
   constructor(props) {

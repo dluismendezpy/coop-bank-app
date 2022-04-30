@@ -1,15 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
-import { backColorPrincipal } from "../Colors";
+import { View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  defaultAppFont,
-  firstNameUserKey,
-  lastNameUserKey,
-} from "../constValues";
-
-const width = Dimensions.get("window").width;
-const height = Dimensions.get("screen").height;
+import { firstNameUserKey, lastNameUserKey } from "../../constValues";
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -50,18 +42,3 @@ export default class Header extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: backColorPrincipal,
-    height: height * 0.19,
-    width: width,
-  },
-  textName: {
-    fontSize: 20,
-    fontFamily: defaultAppFont,
-    fontStyle: "normal",
-  },
-});
