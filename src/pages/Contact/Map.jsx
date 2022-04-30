@@ -107,9 +107,7 @@ export default function Map({ navigation }) {
         </View>
       </View>
       <View style={styles.button}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("LoginScreen")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
           <LinearGradient colors={["#08d4c4", "#01ab9d"]} style={styles.signIn}>
             <Text style={styles.textSign}>Vorver a inicio</Text>
             <MaterialIcons name="navigate-next" color="#fff" size={20} />

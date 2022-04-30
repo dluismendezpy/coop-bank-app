@@ -11,6 +11,7 @@ import { storageTokenKey, urlEndPoint } from "../../constValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
+import { strings } from "./strings";
 
 export default class BankAccount extends React.Component {
   constructor(props) {
@@ -57,16 +58,12 @@ export default class BankAccount extends React.Component {
               console.log("DATA: " + this.state.dataSourceAccounts);
             }
           } else {
-            Alert.alert(
-              "Error!",
-              "Ha ocurrido un error. Vuelve a intentarlo.",
-              [
-                {
-                  text: "Reintentar",
-                  onPress: () => Alert.alert("Token"),
-                },
-              ]
-            );
+            Alert.alert(`${strings.error}!`, strings.errorMessageTryAgain, [
+              {
+                text: strings.tryAgain,
+                onPress: () => Alert.alert("Token"),
+              },
+            ]);
           }
         })
         .catch((err) => console.log(err.message));
