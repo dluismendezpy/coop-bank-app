@@ -5,7 +5,7 @@ import { defaultAppFont } from "../../constValues";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("screen").height;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
