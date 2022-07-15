@@ -3,7 +3,7 @@ import Home from "../pages/Home/Home";
 import News from "../pages/News/News";
 import Login from "../pages/Login/Login";
 import Feed from "../pages/Feed";
-import ClearData from "../Helpers/ClearData";
+import ClearData from "../helpers/ClearData";
 import HelpCenter from "../pages/HelpCenter/HelpCenter";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import Signup from "../pages/Signup/Signup";

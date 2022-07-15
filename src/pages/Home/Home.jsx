@@ -9,7 +9,7 @@ import {
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import { backColorPrincipal } from "../../Colors";
+import { BACK_COLOR_PRINCIPAL } from "../../constants/Colors";
 import { styles } from "./styles";
 import { strings } from "./strings";
 
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
           <FontAwesome5 name={"bars"} size={30} color="#000000" />
         </TouchableOpacity>
         <StatusBar
-          backgroundColor={backColorPrincipal}
+          backgroundColor={BACK_COLOR_PRINCIPAL}
           barStyle="light-content"
         />
         <View style={styles.header}>

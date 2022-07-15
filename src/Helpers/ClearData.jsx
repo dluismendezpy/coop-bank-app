@@ -2,10 +2,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Alert } from "react-native";
 import React from "react";
 import {
-  storageTokenKey,
-  firstNameUserKey,
-  lastNameUserKey,
-} from "../constValues";
+  STORAGE_TOKEN_KEY,
+  FIRST_NAME_USER_KEY,
+  LAST_NAME_USER_KEY,
+} from "../constants/GobalValues";
 
 export default class ClearData extends React.Component {
   constructor(props) {
@@ -14,21 +14,21 @@ export default class ClearData extends React.Component {
   }
 
   logout = () => {
-    AsyncStorage.removeItem(firstNameUserKey)
+    AsyncStorage.removeItem(FIRST_NAME_USER_KEY)
       .then((firstName) => {
         if (firstName) {
           console.log("First Name deleted successfully!");
         }
       })
       .catch((err) => console.log(err.message));
-    AsyncStorage.removeItem(lastNameUserKey)
+    AsyncStorage.removeItem(LAST_NAME_USER_KEY)
       .then((lastName) => {
         if (lastName) {
           console.log("Last Name deleted successfully!");
         }
       })
       .catch((err) => console.log(err.message));
-    AsyncStorage.removeItem(storageTokenKey)
+    AsyncStorage.removeItem(STORAGE_TOKEN_KEY)
       .then((token) => {
         if (token) {
           console.log("Token deleted successfully!");

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import MapView, { Callout, Circle, Marker } from "react-native-maps";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import { defaultAppFont } from "../../constValues";
+import { DEFAULT_APP_FONT } from "../../constants/GobalValues";
 import { LinearGradient } from "expo-linear-gradient";
 import { strings } from "../Home/strings";
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   textTitle: {
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
     fontWeight: "bold",
     fontStyle: "normal",
     fontSize: 18,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textInfo: {
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
@@ -162,6 +162,6 @@ const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
 });

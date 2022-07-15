@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, ScrollView } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import BankAccount from "../components/BankAccount/BankAccount";
-import { backColorPrincipal } from "../Colors";
+import { BACK_COLOR_PRINCIPAL } from "../constants/Colors";
 import { View, StyleSheet } from "react-native";
 import BankLoans from "../components/BankLoans/BankLoans";
 import Header from "../components/Header/Header";
@@ -44,6 +44,6 @@ export default class Feed extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
   },
 });

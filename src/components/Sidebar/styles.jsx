@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
-import { backColorPrincipal } from "../../Colors";
+import { BACK_COLOR_PRINCIPAL } from "../../constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
     padding: 16,
     paddingTop: 48,
   },

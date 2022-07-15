@@ -1,6 +1,6 @@
 import { Dimensions, Platform, StyleSheet } from "react-native";
-import { backColorPrincipal } from "../../Colors";
-import { defaultAppFont } from "../../constValues";
+import { BACK_COLOR_PRINCIPAL } from "../../constants/Colors";
+import { DEFAULT_APP_FONT } from "../../constants/GobalValues";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   bigCircle: {
     width: height * 0.7,
     height: height * 0.7,
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
     borderRadius: 100,
     position: "absolute",
     right: width * 0.25,
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   smallCircle: {
     width: height * 0.4,
     height: height * 0.4,
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
     borderRadius: 100,
     position: "absolute",
     bottom: width * -0.2,
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 55,
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   inputBox: {
     marginTop: 10,
@@ -88,13 +88,13 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   inputLabel: {
     fontSize: 18,
     marginBottom: 6,
     paddingTop: 20,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   input: {
     width: "100%",
@@ -105,7 +105,7 @@ export const styles = StyleSheet.create({
     borderColor: "black",
   },
   loginButton: {
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
     marginTop: 10,
     paddingVertical: 10,
     borderRadius: 4,
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   action: {
     flexDirection: "row",
@@ -145,6 +145,6 @@ export const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
 });

@@ -1,6 +1,6 @@
 import { Dimensions, Platform, StyleSheet } from "react-native";
-import { backColorPrincipal } from "../../Colors";
-import { defaultAppFont } from "../../constValues";
+import { BACK_COLOR_PRINCIPAL } from "../../constants/Colors";
+import { DEFAULT_APP_FONT } from "../../constants/GobalValues";
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.16;
@@ -8,7 +8,7 @@ const height_logo = height * 0.16;
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: backColorPrincipal,
+    backgroundColor: BACK_COLOR_PRINCIPAL,
   },
   header: {
     flex: 1,
@@ -30,12 +30,12 @@ export const styles = StyleSheet.create({
     fontStyle: "italic",
     textAlign: "center",
     fontSize: 40,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   text_footer: {
     color: "#05375a",
     fontSize: 18,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   action: {
     flexDirection: "row",
@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
   errorMsg: {
     color: "#FF0000",
     fontSize: 14,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   button: {
     alignItems: "center",
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   logo: {
     width: height_logo,
@@ -87,8 +87,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   accessIssueMessage: {
-    color: backColorPrincipal,
+    color: BACK_COLOR_PRINCIPAL,
     marginTop: 15,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { defaultAppFont } from "../../constValues";
+import { DEFAULT_APP_FONT } from "../../constants/GobalValues";
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   accountTypeText: {
     fontSize: 14,
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
   },
   loaderStyle: {
     flex: 1,
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
   },
   balanceTextStyle: {
-    fontFamily: defaultAppFont,
+    fontFamily: DEFAULT_APP_FONT,
     fontSize: 14,
     marginTop: 5,
   },

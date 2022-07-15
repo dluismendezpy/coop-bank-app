@@ -14,12 +14,12 @@ import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import {
-  storageTokenKey,
-  firstNameUserKey,
-  lastNameUserKey,
-} from "../../constValues";
+  STORAGE_TOKEN_KEY,
+  FIRST_NAME_USER_KEY,
+  LAST_NAME_USER_KEY,
+} from "../../constants/GobalValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { backColorPrincipal } from "../../Colors";
+import { BACK_COLOR_PRINCIPAL } from "../../constants/Colors";
 import { styles } from "./styles";
 import { strings } from "./strings";
 
@@ -40,9 +40,9 @@ const Signup = ({ navigation }) => {
 
   React.useEffect(() => {
     const interval = setInterval(async () => {
-      await AsyncStorage.setItem(storageTokenKey, data.token);
-      await AsyncStorage.setItem(firstNameUserKey, data.firstName);
-      await AsyncStorage.setItem(lastNameUserKey, data.lastName);
+      await AsyncStorage.setItem(STORAGE_TOKEN_KEY, data.token);
+      await AsyncStorage.setItem(FIRST_NAME_USER_KEY, data.firstName);
+      await AsyncStorage.setItem(LAST_NAME_USER_KEY, data.lastName);
     }, 10);
     return () => clearInterval(interval);
   });
@@ -133,7 +133,7 @@ const Signup = ({ navigation }) => {
         <FontAwesome5 name={"bars"} size={30} color="#000000" />
       </TouchableOpacity>
       <StatusBar
-        backgroundColor={backColorPrincipal}
+        backgroundColor={BACK_COLOR_PRINCIPAL}
         barStyle="light-content"
       />
       <View style={styles.imageContainer}>
@@ -242,7 +242,7 @@ const Signup = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("HelpCenterScreen")}
         >
-          <Text style={{ color: backColorPrincipal, marginTop: 15 }}>
+          <Text style={{ color: BACK_COLOR_PRINCIPAL, marginTop: 15 }}>
             {strings.troubleSigningIn}
           </Text>
         </TouchableOpacity>
@@ -274,7 +274,7 @@ const Signup = ({ navigation }) => {
             style={[
               styles.signIn,
               {
-                borderColor: backColorPrincipal,
+                borderColor: BACK_COLOR_PRINCIPAL,
                 marginTop: 15,
               },
             ]}
@@ -285,7 +285,7 @@ const Signup = ({ navigation }) => {
                 style={[
                   styles.textSign,
                   {
-                    color: backColorPrincipal,
+                    color: BACK_COLOR_PRINCIPAL,
                     textDecorationLine: "underline",
                   },
                 ]}

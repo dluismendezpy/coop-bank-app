@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { urlEndPoint } from "../../constValues";
+import { URL_ENDPOINT } from "../../constants/GobalValues";
 import { styles } from "./styles";
 
 const maxContentLength = 70;
@@ -25,7 +25,7 @@ export default class News extends React.Component {
   }
 
   getURL = () => {
-    return `${urlEndPoint}/noticias`;
+    return `${URL_ENDPOINT}/noticias`;
   };
 
   componentDidMount() {

@@ -16,10 +16,10 @@ import {
 import Sidebar from "./src/components/Sidebar/Sidebar";
 import { Entypo, Feather } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
-import { isLoggedIn } from "./src/constValues";
+import { IS_LOGGED_IN } from "./src/constants/GobalValues";
 
 const DrawerNavigator = createDrawerNavigator(
-  !isLoggedIn
+  !IS_LOGGED_IN
     ? {
         HomeScreen: {
           screen: HomeScreen,

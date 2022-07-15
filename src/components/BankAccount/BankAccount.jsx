@@ -7,7 +7,7 @@ import {
   StatusBar,
   Alert,
 } from "react-native";
-import { storageTokenKey, urlEndPoint } from "../../constValues";
+import { STORAGE_TOKEN_KEY, URL_ENDPOINT } from "../../constants/GobalValues";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -25,12 +25,12 @@ export default class BankAccount extends React.Component {
   }
 
   getURL = () => {
-    return `${urlEndPoint}/resumen`;
+    return `${URL_ENDPOINT}/resumen`;
   };
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      AsyncStorage.getItem(storageTokenKey)
+      AsyncStorage.getItem(STORAGE_TOKEN_KEY)
         .then((token) => {
           if (token) {
             this.setState({

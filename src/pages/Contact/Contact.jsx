@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { defaultAppFont } from "../../constValues";
+import { DEFAULT_APP_FONT } from "../../constants/GobalValues";
 import { MaterialIcons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
 
@@ -198,7 +198,7 @@ export default function Contact({ navigation }) {
                       fontWeight: "800",
                       fontSize: 28,
                       marginBottom: 4,
-                      fontFamily: defaultAppFont,
+                      fontFamily: DEFAULT_APP_FONT,
                     }}
                   >
                     {item.title}
@@ -230,7 +230,7 @@ export default function Contact({ navigation }) {
                     fontSize: 18,
                     color: "#000000",
                     marginBottom: 10,
-                    fontFamily: defaultAppFont,
+                    fontFamily: DEFAULT_APP_FONT,
                   }}
                 >
                   {item.rol}
@@ -239,7 +239,7 @@ export default function Contact({ navigation }) {
                   style={{
                     color: "#000000",
                     fontWeight: "300",
-                    fontFamily: defaultAppFont,
+                    fontFamily: DEFAULT_APP_FONT,
                   }}
                 >
                   {item.description}
